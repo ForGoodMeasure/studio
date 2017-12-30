@@ -6,9 +6,32 @@ import { COLORS } from './constants';
 export default localContext => injectGlobal`
   ${ styledNormalize };
 
+  @font-face {
+    font-family: 'Styrene';
+    font-weight: 300;
+    src: url('/fonts/StyreneThin.woff2');
+  }
+  @font-face {
+    font-family: 'Styrene';
+    font-weight: 400;
+    src: url('/fonts/StyreneRegular.woff2');
+  }
+  @font-face {
+    font-family: 'Styrene';
+    font-weight: 500;
+    src: url('/fonts/StyreneMedium.woff2');
+  }
+  @font-face {
+    font-family: 'Styrene';
+    font-weight: 600;
+    color: red;
+    src: url('/fonts/StyreneBold.woff2');
+  }
   body {
     font-size: 18px;
-    font-family: 'Circular-Std', sans-serif;
+    font-family: 'Styrene', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 0.07em black;
     background: ${ COLORS.BLUE };
   }
 

@@ -3,31 +3,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Panel from './panel';
+import Panels from './panels';
 import { localContextType } from '../util';
 
 const Style = styled.div`
-  a {
-    display: block;
-  }
-  .content {
-    background: papayawhip;
-    text-align: center;
-    padding: 1em;
+  .heading {
+    position: fixed;
+    z-index: 1;
   }
 `;
+const Window = styled.div`
+  width: 100vw;
+  height: 100vw;
+  overflow: hidden;
+`;
 
-const App = (props, {localContext}) => {
-  return (
-    <Style>
-      <h2>Demo App</h2>
-      <Link to={ localContext.resourceUrl("/") }>Home</Link>
-      <Link to={ localContext.resourceUrl("/page-1") }>Page1</Link>
-      <Link to={ localContext.resourceUrl("/page-2") }>Page2</Link>
-      <div className="content">
-        { props.params.string }
-      </div>
-    </Style>
-  );
+class App extends React.Component {
+
+  render() {
+    const localContext = this.context.localContext;
+    return (
+      <Style>
+        <h1 className="heading">
+          For Good Measure
+        </h1>
+        <Window
+          onClick={ this.onClick }
+        >
+          <Panels>
+            <Panel color="red" />
+            <Panel color="yellow" />
+            <Panel color="blue" />
+            <Panel color="green" />
+          </Panels>
+        </Window>
+      </Style>
+    );
+  }
 }
 
 App.contextTypes = localContextType;
