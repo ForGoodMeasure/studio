@@ -11158,10 +11158,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'app__Style'
-})(['.heading{position:fixed;z-index:1;}']);
+})(['overflow:hidden;.heading{position:fixed;z-index:1;}']);
 var Window = _styledComponents2.default.div.withConfig({
   displayName: 'app__Window'
-})(['width:100vw;height:100vw;overflow:hidden;']);
+})(['width:100vw;overflow:hidden;']);
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -11175,7 +11175,11 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      var localContext = this.context.localContext;
+      var _this2 = this;
+
+      var imgUrl = function imgUrl(url) {
+        return _this2.context.localContext.assetUrl('/images/' + url);
+      };
       return _react2.default.createElement(
         Style,
         null,
@@ -11192,10 +11196,24 @@ var App = function (_React$Component) {
           _react2.default.createElement(
             _panels2.default,
             null,
-            _react2.default.createElement(_panel2.default, { color: 'red' }),
-            _react2.default.createElement(_panel2.default, { color: 'yellow' }),
-            _react2.default.createElement(_panel2.default, { color: 'blue' }),
-            _react2.default.createElement(_panel2.default, { color: 'green' })
+            _react2.default.createElement(_panel2.default, { color: 'red', img: imgUrl('better-angels-1.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'yellow', img: imgUrl('better-angels-2.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'blue', img: imgUrl('better-angels-3.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'purple', img: imgUrl('fleurisse-1.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'orange', img: imgUrl('fleurisse-2.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'red', img: imgUrl('fleurisse-3.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('habitas-1.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'brown', img: imgUrl('habitas-2.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'white', img: imgUrl('habitas-3.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('pasta-boat-1.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('pasta-boat-2.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'black', img: imgUrl('pasta-boat-3.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('rad-1.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('rad-2.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('rad-3.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('rad-4.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('rad-5.jpg') }),
+            _react2.default.createElement(_panel2.default, { color: 'green', img: imgUrl('sex-1.jpg') })
           )
         )
       );
@@ -11236,8 +11254,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panel__Style'
-})(['height:100vh;width:100vw;background:', ';display:inline-block;'], function (p) {
+})(['height:100vh;width:100vw;background:', ';display:inline-block;background-image:url(', ');background-size:cover;background-position-x:center;background-position-y:center;'], function (p) {
   return p.color;
+}, function (p) {
+  return p.img;
 });
 
 exports.default = function (props) {
@@ -41881,7 +41901,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'controls__Style'
-})(['.side{position:absolute;width:50%;height:100%;top:0;cursor:w-resize;z-index:100;&.right-side{right:0;cursor:e-resize;}}']);
+})(['.side{position:fixed;width:50vw;height:100vh;top:0;cursor:w-resize;z-index:100;&.right-side{right:0;cursor:e-resize;}&.left-side{left:0;}}']);
 
 exports.default = function (props) {
   return _react2.default.createElement(
@@ -41889,7 +41909,11 @@ exports.default = function (props) {
     null,
     _react2.default.createElement('div', { className: 'side left-side', onClick: props.onLeftClick }),
     _react2.default.createElement('div', { className: 'side right-side', onClick: props.onRightClick }),
-    props.children
+    _react2.default.createElement(
+      'div',
+      { className: 'container' },
+      props.children
+    )
   );
 };
 
