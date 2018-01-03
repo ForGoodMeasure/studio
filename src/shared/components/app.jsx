@@ -8,6 +8,7 @@ import Panels from './panels';
 import { localContextType } from '../util';
 import { Px } from '../style/parallax';
 import Background from './background';
+import Window from './window';
 
 const Style = styled.div`
   .heading {
@@ -15,10 +16,7 @@ const Style = styled.div`
     z-index: 1;
   }
 `;
-const Window = styled.div`
-  width: 100vw;
-  overflow: hidden;
-`;
+
 
 class App extends React.Component {
   render() {
@@ -26,13 +24,12 @@ class App extends React.Component {
     const imgUrl = url => localContext.assetUrl(`/images/${ url }`);
     return (
       <Style>
-        <Background />
-        <Window>
-          <Panels>
-            <Panel images={ localContext.getContent('panels', 'rad') } />
-            <Panel empty />
-          </Panels>
-        </Window>
+        <Background cursorUrl={ imgUrl('view-work-cursor.png') } />
+        <Panels cursorUrl={ imgUrl('view-work-cursor.png') }>
+          <Panel empty />
+          <Panel images={ localContext.getContent('panels', 'rad') } />
+          <Panel images={ localContext.getContent('panels', 'sex') } />
+        </Panels>
       </Style>
     );
   }

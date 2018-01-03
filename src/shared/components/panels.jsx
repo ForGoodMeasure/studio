@@ -10,7 +10,21 @@ import { Px } from '../style/parallax';
 const Style = Px.extend`
   position: relative;
   height: 100vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  cursor: none;
+  .cursor {
+    transition:
+      top 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      opacity 600ms ease-in;
+    height: 6em;
+    width: 6em;
+    position: fixed;
+    z-index: 10;
+    background: url('${ p => p.cursorUrl }');
+    background-size: cover;
+    pointer-events:none;
+  }
 `;
 
 class Panels extends React.Component {
@@ -19,7 +33,9 @@ class Panels extends React.Component {
     super(props);
     this.maxIndex = props.children.length - 1;
     this.state = {
-      index: 0
+      index: 0,
+      cursorX: null,
+      cursorY: null
     };
   }
 
@@ -55,7 +71,21 @@ class Panels extends React.Component {
     scroll.top(document.getElementById('panels'), height, { duration: 1000 });
   }
 
+  onMouseMove = e => {
+    const scrollTop = document.getElementById('panels').scrollTop;
+    let isScrolling = false;
+    if (Math.abs(this.state.cursorY - e.clientY) > 600) {
+      isScrolling = true;
+    }
+    this.setState({
+      cursorX: e.clientX,
+      cursorY: scrollTop + e.clientY,
+      isScrolling
+    });
+  }
+
   render() {
+    const childList = React.Children.toArray(this.props.children);
     const index = this.state.index;
     const prevIndex = this.modifyIndex(index, -1);
     const nextIndex = this.modifyIndex(index, 1);
@@ -65,9 +95,18 @@ class Panels extends React.Component {
         offset={ this.state.index }
         maxIndex={ this.maxIndex }
         onClick={ this.decrement }
+        onMouseMove={ this.onMouseMove }
+        cursorUrl={ this.props.cursorUrl }
         id="panels"
+        ref="panels"
       >
-        { this.props.children }
+        { this.state.cursorX && <div className="cursor" style={{
+          top: this.state.cursorY,
+          left: this.state.cursorX
+        }}/> }
+        {
+          childList
+        }
       </Style>
     );
   }

@@ -11118,7 +11118,6 @@ var getLocalContext = function getLocalContext(_ref) {
       return [stageContext.ghostBase, resourcePath].join('');
     },
     getContent: function getContent(namespace, key) {
-      console.log(content);
       return (0, _contentManager.getContent)(content, namespace, key);
     },
 
@@ -11292,6 +11291,10 @@ var _background = __webpack_require__(191);
 
 var _background2 = _interopRequireDefault(_background);
 
+var _window = __webpack_require__(401);
+
+var _window2 = _interopRequireDefault(_window);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11303,9 +11306,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'app__Style'
 })(['.heading{position:fixed;z-index:1;}']);
-var Window = _styledComponents2.default.div.withConfig({
-  displayName: 'app__Window'
-})(['width:100vw;overflow:hidden;']);
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -11326,16 +11326,13 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         Style,
         null,
-        _react2.default.createElement(_background2.default, null),
+        _react2.default.createElement(_background2.default, { cursorUrl: imgUrl('view-work-cursor.png') }),
         _react2.default.createElement(
-          Window,
-          null,
-          _react2.default.createElement(
-            _panels2.default,
-            null,
-            _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'rad') }),
-            _react2.default.createElement(_panel2.default, { empty: true })
-          )
+          _panels2.default,
+          { cursorUrl: imgUrl('view-work-cursor.png') },
+          _react2.default.createElement(_panel2.default, { empty: true }),
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'rad') }),
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'sex') })
         )
       );
     }
@@ -11359,6 +11356,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
@@ -11373,31 +11372,76 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'background__Style'
-})(['position:fixed;width:100vw;height:100vh;z-index:-10;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:1.6em;pointer-events:none;p{box-sizing:border-box;padding:0 8em;}h1{margin-bottom:0.5em;}']);
+})(['position:fixed;width:100vw;height:100vh;z-index:-10;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:1.6em;.cursor{height:6em;width:6em;position:fixed;z-index:10;background:url(\'', '\');background-size:cover;}p{box-sizing:border-box;padding:0 8em;}h1{margin-bottom:0.5em;}'], function (p) {
+  return p.cursorUrl;
+});
 
-exports.default = function (props) {
-  return _react2.default.createElement(
-    Style,
-    null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'FOR GOOD MEASURE'
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      'is a creative studio in Brooklyn, New York building brands and fresh websites.',
-      _react2.default.createElement('br', null),
-      _react2.default.createElement('br', null),
-      'Contact:',
-      _react2.default.createElement('br', null),
-      'hello@forgoodmeasure.us'
-    )
-  );
-};
+var Background = function (_React$Component) {
+  _inherits(Background, _React$Component);
+
+  function Background(props) {
+    _classCallCheck(this, Background);
+
+    var _this = _possibleConstructorReturn(this, (Background.__proto__ || Object.getPrototypeOf(Background)).call(this, props));
+
+    _this.onMouseMove = function (e) {
+      console.log('YO');
+      _this.setState({
+        cursorX: e.clientX,
+        cursorY: e.clientY
+      });
+    };
+
+    _this.state = {
+      cursorX: null,
+      cursorY: null
+    };
+    return _this;
+  }
+
+  _createClass(Background, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Style,
+        {
+          cursorUrl: this.props.cursorUrl
+        },
+        this.state.cursorX && _react2.default.createElement('div', { className: 'cursor', style: {
+            top: this.state.cursorY,
+            left: this.state.cursorX
+          } }),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'FOR GOOD MEASURE'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'is a creative studio in Brooklyn, New York building brands and fresh websites.',
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          'Contact:',
+          _react2.default.createElement('br', null),
+          'hello@forgoodmeasure.us'
+        )
+      );
+    }
+  }]);
+
+  return Background;
+}(_react2.default.Component);
+
+exports.default = Background;
 
 /***/ }),
 /* 192 */
@@ -11453,7 +11497,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n'], ['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 50%;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n'], ['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 50%;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n']);
 
 var _react = __webpack_require__(1);
 
@@ -11506,13 +11550,13 @@ var Panel = function Panel(props, _ref) {
       _reactTilt2.default,
       {
         className: 'tilt-element',
-        options: { max: 1, scale: 1, perspective: 100000, axis: 'Y' },
+        options: { max: 5, scale: 1, perspective: 100000, axis: 'Y' },
         style: { height: '100%', width: '100%' }
       },
       props.images.map(function (img, i) {
         return _react2.default.createElement(
           _parallax.PxLayer,
-          { depth: 3 * Math.floor(i - props.images.length / 2), key: i },
+          { depth: 6 * Math.floor(i - props.images.length / 2), key: i },
           _react2.default.createElement(Block, {
             src: localContext.assetUrl('images' + img.url),
             width: img.width,
@@ -11542,7 +11586,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n  height: 100vh;\n  overflow: scroll;\n'], ['\n  position: relative;\n  height: 100vh;\n  overflow: scroll;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n  height: 100vh;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  cursor: none;\n  .cursor {\n    transition:\n      top 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275),\n      opacity 600ms ease-in;\n    height: 6em;\n    width: 6em;\n    position: fixed;\n    z-index: 10;\n    background: url(\'', '\');\n    background-size: cover;\n    pointer-events:none;\n  }\n'], ['\n  position: relative;\n  height: 100vh;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  cursor: none;\n  .cursor {\n    transition:\n      top 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275),\n      opacity 600ms ease-in;\n    height: 6em;\n    width: 6em;\n    position: fixed;\n    z-index: 10;\n    background: url(\'', '\');\n    background-size: cover;\n    pointer-events:none;\n  }\n']);
 
 var _react = __webpack_require__(1);
 
@@ -11580,7 +11624,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Style = _parallax.Px.extend(_templateObject);
+var Style = _parallax.Px.extend(_templateObject, function (p) {
+  return p.cursorUrl;
+});
 
 var Panels = function (_React$Component) {
   _inherits(Panels, _React$Component);
@@ -11612,9 +11658,24 @@ var Panels = function (_React$Component) {
       _scroll2.default.top(document.getElementById('panels'), height, { duration: 1000 });
     };
 
+    _this.onMouseMove = function (e) {
+      var scrollTop = document.getElementById('panels').scrollTop;
+      var isScrolling = false;
+      if (Math.abs(_this.state.cursorY - e.clientY) > 600) {
+        isScrolling = true;
+      }
+      _this.setState({
+        cursorX: e.clientX,
+        cursorY: scrollTop + e.clientY,
+        isScrolling: isScrolling
+      });
+    };
+
     _this.maxIndex = props.children.length - 1;
     _this.state = {
-      index: 0
+      index: 0,
+      cursorX: null,
+      cursorY: null
     };
     return _this;
   }
@@ -11633,6 +11694,7 @@ var Panels = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var childList = _react2.default.Children.toArray(this.props.children);
       var index = this.state.index;
       var prevIndex = this.modifyIndex(index, -1);
       var nextIndex = this.modifyIndex(index, 1);
@@ -11643,9 +11705,16 @@ var Panels = function (_React$Component) {
           offset: this.state.index,
           maxIndex: this.maxIndex,
           onClick: this.decrement,
-          id: 'panels'
+          onMouseMove: this.onMouseMove,
+          cursorUrl: this.props.cursorUrl,
+          id: 'panels',
+          ref: 'panels'
         },
-        this.props.children
+        this.state.cursorX && _react2.default.createElement('div', { className: 'cursor', style: {
+            top: this.state.cursorY,
+            left: this.state.cursorX
+          } }),
+        childList
       );
     }
   }]);
@@ -42440,6 +42509,92 @@ function symbolObservablePonyfill(root) {
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
 
+
+/***/ }),
+/* 401 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(3);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = __webpack_require__(28);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Style = _styledComponents2.default.div.withConfig({
+  displayName: 'window__Style'
+})(['width:100vw;height:100vh;position:fixed;background:red;z-index:-13;overflow:hidden;.cursor{height:6em;width:6em;position:fixed;z-index:10;background:url(\'', '\');background-size:cover;}'], function (p) {
+  return p.cursorUrl;
+});
+
+var Window = function (_React$Component) {
+  _inherits(Window, _React$Component);
+
+  function Window(props) {
+    _classCallCheck(this, Window);
+
+    var _this = _possibleConstructorReturn(this, (Window.__proto__ || Object.getPrototypeOf(Window)).call(this, props));
+
+    _this.onMouseMove = function (e) {
+      _this.setState({
+        cursorX: e.pageX,
+        cursorY: e.pageY
+      });
+    };
+
+    _this.state = {
+      cursorX: null,
+      cursorY: null
+    };
+    return _this;
+  }
+
+  _createClass(Window, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Style,
+        {
+          onMouseMove: this.onMouseMove,
+          cursorUrl: this.props.cursorUrl
+        },
+        this.state.cursorX && _react2.default.createElement('div', { className: 'cursor', style: {
+            top: this.state.cursorY,
+            left: this.state.cursorX
+          } }),
+        this.props.children
+      );
+    }
+  }]);
+
+  return Window;
+}(_react2.default.Component);
+
+;
+
+exports.default = Window;
 
 /***/ })
 /******/ ]);

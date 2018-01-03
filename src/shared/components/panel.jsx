@@ -11,6 +11,7 @@ const Style = PxSection.extend`
   width: 100vw;
   background: ${ p => p.color };
   display: block;
+  margin-bottom: 50%;
   .tilt-element {
     transform-style: preserve-3d;
   }
@@ -31,12 +32,12 @@ const Panel = (props, { localContext }) => {
     <Style { ...props } >
       <Tilt
         className="tilt-element"
-        options={{ max : 1, scale: 1, perspective: 100000, axis: 'Y' }}
+        options={{ max : 5, scale: 1, perspective: 100000, axis: 'Y' }}
         style={{ height: '100%', width: '100%' }}
       >
         {
           props.images.map( (img, i) => (
-            <PxLayer depth={ 3 * Math.floor( i - props.images.length / 2) } key={ i } >
+            <PxLayer depth={ 6 * Math.floor( i - props.images.length / 2) } key={ i } >
               <Block
                 src={ localContext.assetUrl(`images${ img.url }`) }
                 width={ img.width }

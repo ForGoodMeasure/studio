@@ -3422,7 +3422,6 @@ var getLocalContext = function getLocalContext(_ref) {
       return [stageContext.ghostBase, resourcePath].join('');
     },
     getContent: function getContent(namespace, key) {
-      console.log(content);
       return (0, _contentManager.getContent)(content, namespace, key);
     },
 

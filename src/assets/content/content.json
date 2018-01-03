@@ -25,6 +25,33 @@
       "width": "25vmax",
       "left": "60vmax",
       "top": "35vmax"
+    }
+  ],
+  "sex": [{
+      "url": "/sex/condom.jpg",
+      "width": "25vmax",
+      "left": "10vmax",
+      "top": "10vmax"
+    }, {
+      "url": "/sex/dildo.png",
+      "width": "45vmax",
+      "left": "10vmax",
+      "top": "31vmax"
+    }, {
+      "url": "/sex/ipad.png",
+      "width": "50vmax",
+      "left": "40vmax",
+      "top": "7vmax"
+    }, {
+      "url": "/sex/ipad.png",
+      "width": "26vmax",
+      "left": "49vmax",
+      "top": "18vmax"
+    }, {
+      "url": "/sex/typecrop.png",
+      "width": "25vmax",
+      "left": "60vmax",
+      "top": "35vmax"
     }]
   }
 }
