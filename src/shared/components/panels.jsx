@@ -1,13 +1,16 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import scroll from 'scroll';
 
 import Controls from './controls';
+import { Px } from '../style/parallax';
 
-const Style = styled.div`
+const Style = Px.extend`
   position: relative;
-  left: -100vw;
-  width: ${ p => p.maxIndex * 100}vw;
+  height: 100vh;
+  overflow: hidden;
 `;
 
 class Panels extends React.Component {
@@ -38,14 +41,21 @@ class Panels extends React.Component {
 
   decrement = () => {
     this.modifyState(1);
+    this.scroll();
   }
 
   increment = () => {
     this.modifyState(-1);
+    this.scroll();
+  }
+
+  scroll = () => {
+    const docHeight = document.body.scrollHeight;
+    const height = this.state.index * docHeight;
+    scroll.top(document.getElementById('panels'), height);
   }
 
   render() {
-    const childList = React.Children.toArray(this.props.children);
     const index = this.state.index;
     const prevIndex = this.modifyIndex(index, -1);
     const nextIndex = this.modifyIndex(index, 1);
@@ -54,15 +64,10 @@ class Panels extends React.Component {
       <Style
         offset={ this.state.index }
         maxIndex={ this.maxIndex }
+        onClick={ this.decrement }
+        id="panels"
       >
-        <Controls
-          onLeftClick={ this.decrement }
-          onRightClick={ this.increment }
-        >
-          { childList[ prevIndex ] }
-          { childList[ index ] }
-          { childList[ nextIndex ] }
-        </Controls>
+        { this.props.children }
       </Style>
     );
   }

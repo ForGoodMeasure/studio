@@ -30,9 +30,6 @@ export default localContext => injectGlobal`
   body {
     font-size: 18px;
     font-family: 'Styrene', sans-serif;
-    color: transparent;
-    -webkit-text-stroke: 0.07em black;
-    background: ${ COLORS.BLUE };
   }
 
   body * {
@@ -125,6 +122,8 @@ export default localContext => injectGlobal`
   h1 {
     font-size: 3em;
     font-weight: 500;
+    color: transparent;
+    -webkit-text-stroke: 0.02em black;
   }
   h2 {
     font-size: 2.2em;

@@ -1,4 +1,4 @@
-service: origin
+service: fgm-site
 
 provider:
   name: aws
@@ -7,7 +7,7 @@ provider:
   profile: fgm-dev
 
 custom:
-  s3BucketName: origin-app-test
+  s3BucketName: forgoodmeasure.us
 
 package:
   include:
