@@ -1,5 +1,5 @@
 {
-  "name": "better-angels-web",
+  "name": "fgm-site",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "deploy": "./scripts clean && webpack && ./scripts uploadAssets && serverless deploy",
+    "deploy": "./scripts clean && webpack && serverless deploy -f server && ./scripts makeStatic && ./scripts uploadAssets",
     "local": "nodemon -w ./dist"
   }
 }

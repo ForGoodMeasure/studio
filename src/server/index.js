@@ -13,6 +13,7 @@ import genStore from '../shared/gen-store'
 import config from '../../config.json'
 
 const PORT = config.global.port;
+const APP_ID = config.global.app_id;
 const app = express()
 
 let serverlessExpress = null
@@ -24,9 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 /*
   Note: locally, the server runs out of 'dist'
 */
-app.use(express.static(`${__dirname}/../assets`));
+app.use(express.static(`${__dirname}/../assets`))
 
-app.get('/health', (req, res) => res.send('OK'))
+app.get('/health', (req, res) => res.send(APP_ID))
 
 app.use('/admin', adminApp(config))
 

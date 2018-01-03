@@ -11,13 +11,13 @@ const Style = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.7em;
+  font-size: 1.6em;
   pointer-events: none;
   p {
     box-sizing: border-box;
     padding: 0 8em;
   }
-  h2 {
+  h1 {
     margin-bottom: 0.5em;
   }
 `
@@ -26,7 +26,7 @@ export default props => (
   <Style>
     <h1>FOR GOOD MEASURE</h1>
     <p>
-      A creative studio in Brooklyn, New York building brands and fresh websites.
+      is a creative studio in Brooklyn, New York building brands and fresh websites.
       <br/>
       <br/>
       Contact:

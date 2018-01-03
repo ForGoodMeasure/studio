@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Tilt from 'react-tilt';
 
+import { localContextType } from '../util';
 import { PxSection, PxLayer } from '../style/parallax';
 
 const Style = PxSection.extend`
@@ -15,16 +16,14 @@ const Style = PxSection.extend`
   }
 `;
 
-const Block = styled.div`
-  background: ${ p => p.color };
-  height: ${ p => p.size };
-  width: ${ p => p.size };
+const Block = styled.img`
+  width: ${ p => p.width };
   position: relative;
   left: ${ p => p.left };
   top: ${ p => p.top };
 `;
 
-export default props => {
+const Panel = (props, { localContext }) => {
   if (props.empty) {
     return <Style />
   }
@@ -32,19 +31,26 @@ export default props => {
     <Style { ...props } >
       <Tilt
         className="tilt-element"
-        options={{ max : 10, scale: 1, perspective: 10000, axis: 'Y' }}
+        options={{ max : 1, scale: 1, perspective: 100000, axis: 'Y' }}
         style={{ height: '100%', width: '100%' }}
       >
-        <PxLayer depth={ -2 } >
-          <Block color="red" left="20%" top="45%" size="20%"/>
-        </PxLayer>
-        <PxLayer depth={ 0 }>
-          <Block color="blue" left="30%" top="30%" size="50%"/>
-        </PxLayer>
-        <PxLayer depth={ 2 }>
-          <Block color="orange" left="25%" top="20%" size="30%"/>
-        </PxLayer>
+        {
+          props.images.map( (img, i) => (
+            <PxLayer depth={ 3 * Math.floor( i - props.images.length / 2) } key={ i } >
+              <Block
+                src={ localContext.assetUrl(`images${ img.url }`) }
+                width={ img.width }
+                left={ img.left }
+                top={ img.top }
+              />
+            </PxLayer>
+          ))
+        }
       </Tilt>
     </Style>
   )
 };
+
+Panel.contextTypes = localContextType;
+
+export default Panel;

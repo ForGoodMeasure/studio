@@ -10,7 +10,7 @@ import { Px } from '../style/parallax';
 const Style = Px.extend`
   position: relative;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
 `;
 
 class Panels extends React.Component {
@@ -52,7 +52,7 @@ class Panels extends React.Component {
   scroll = () => {
     const docHeight = document.body.scrollHeight;
     const height = this.state.index * docHeight;
-    scroll.top(document.getElementById('panels'), height);
+    scroll.top(document.getElementById('panels'), height, { duration: 1000 });
   }
 
   render() {

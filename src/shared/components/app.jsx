@@ -21,17 +21,15 @@ const Window = styled.div`
 `;
 
 class App extends React.Component {
-
   render() {
-    const imgUrl = url => this.context.localContext.assetUrl(`/images/${ url }`);
+    const localContext = this.context.localContext;
+    const imgUrl = url => localContext.assetUrl(`/images/${ url }`);
     return (
       <Style>
         <Background />
         <Window>
           <Panels>
-            <Panel />
-            <Panel />
-            <Panel />
+            <Panel images={ localContext.getContent('panels', 'rad') } />
             <Panel empty />
           </Panels>
         </Window>

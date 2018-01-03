@@ -1,1 +1,30 @@
-{}
+{
+  "panels": {
+    "rad": [{
+      "url": "/rad/title.png",
+      "width": "25vmax",
+      "left": "10vmax",
+      "top": "10vmax"
+    }, {
+      "url": "/rad/machines.jpg",
+      "width": "45vmax",
+      "left": "10vmax",
+      "top": "31vmax"
+    }, {
+      "url": "/rad/spread.jpg",
+      "width": "50vmax",
+      "left": "40vmax",
+      "top": "7vmax"
+    }, {
+      "url": "/rad/poster.png",
+      "width": "26vmax",
+      "left": "49vmax",
+      "top": "18vmax"
+    }, {
+      "url": "/rad/signs.jpg",
+      "width": "25vmax",
+      "left": "60vmax",
+      "top": "35vmax"
+    }]
+  }
+}
