@@ -9,6 +9,8 @@ import { Px } from '../style/parallax';
 
 const FGM_GRAY = "#383838";
 const RAD_BLUE = "#38404b";
+const HAB_GREEN = "#043e2f";
+const SHERP_GRAY = '#333334';
 
 const Style = Px.extend`
   position: relative;
@@ -112,6 +114,9 @@ class Panels extends React.Component {
     return ([
       FGM_GRAY,
       RAD_BLUE,
+      HAB_GREEN,
+      SHERP_GRAY,
+      'black',
       'black'
     ])[this.state.index]
   }
@@ -120,7 +125,10 @@ class Panels extends React.Component {
     return ([
       'white',
       'white',
-      'white'
+      'white',
+      'white',
+      'white',
+      FGM_GRAY
     ])[this.state.index]
   }
 

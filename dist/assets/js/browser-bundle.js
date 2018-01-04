@@ -11331,7 +11331,10 @@ var App = function (_React$Component) {
           { cursorUrl: imgUrl('view-work-cursor.png') },
           _react2.default.createElement(_panel2.default, { empty: true }),
           _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'rad') }),
-          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'sex') })
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'hab') }),
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'sherpa') }),
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'sex') }),
+          _react2.default.createElement(_panel2.default, { empty: true })
         )
       );
     }
@@ -11576,6 +11579,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var FGM_GRAY = "#383838";
 var RAD_BLUE = "#38404b";
+var HAB_GREEN = "#043e2f";
+var SHERP_GRAY = '#333334';
 
 var Style = _parallax.Px.extend(_templateObject, function (p) {
   return p.cursorUrl;
@@ -11634,11 +11639,11 @@ var Panels = function (_React$Component) {
     };
 
     _this.getBgColor = function () {
-      return [FGM_GRAY, RAD_BLUE, 'black'][_this.state.index];
+      return [FGM_GRAY, RAD_BLUE, HAB_GREEN, SHERP_GRAY, 'black', 'black'][_this.state.index];
     };
 
     _this.getTextColor = function () {
-      return ['white', 'white', 'white'][_this.state.index];
+      return ['white', 'white', 'white', 'white', 'white', FGM_GRAY][_this.state.index];
     };
 
     _this.maxIndex = props.children.length - 1;

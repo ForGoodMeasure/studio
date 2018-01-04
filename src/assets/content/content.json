@@ -52,6 +52,64 @@
       "width": "25vmax",
       "left": "60vmax",
       "top": "35vmax"
-    }]
+    }
+  ],
+  "hab": [{
+      "url": "/hab/case-04.png",
+      "width": "25vmax",
+      "left": "10vmax",
+      "top": "10vmax"
+    }, {
+      "url": "/hab/case-12.png",
+      "width": "30vmax",
+      "left": "10vmax",
+      "top": "31vmax"
+    }, {
+      "url": "/hab/posters.jpg",
+      "width": "50vmax",
+      "left": "40vmax",
+      "top": "7vmax"
+    }, {
+      "url": "/hab/case-02.png",
+      "width": "26vmax",
+      "left": "49vmax",
+      "top": "18vmax"
+    }, {
+      "url": "/hab/case-10.png",
+      "width": "25vmax",
+      "left": "60vmax",
+      "top": "35vmax"
+    }, {
+      "url": "/hab/case-05.png",
+      "width": "25vmax",
+      "left": "60vmax",
+      "top": "35vmax"
+    }],
+    "sherpa": [{
+        "url": "/sherpa/sherpa-07.jpg",
+        "width": "25vmax",
+        "left": "10vmax",
+        "top": "10vmax"
+      }, {
+        "url": "/sherpa/sherpa-03.jpg",
+        "width": "30vmax",
+        "left": "10vmax",
+        "top": "31vmax"
+      }, {
+        "url": "/sherpa/sherpa-04.jpg",
+        "width": "50vmax",
+        "left": "40vmax",
+        "top": "7vmax"
+      }, {
+        "url": "/sherpa/sherpa-11.png",
+        "width": "26vmax",
+        "left": "49vmax",
+        "top": "18vmax"
+      }, {
+        "url": "/sherpa/sherpa-10.jpg",
+        "width": "25vmax",
+        "left": "60vmax",
+        "top": "35vmax"
+      }]
   }
 }
