@@ -33,7 +33,7 @@
       "left": "10vmax",
       "top": "10vmax"
     }, {
-      "url": "/sex/dildo-clear.png",
+      "url": "/sex/dildo.png",
       "width": "45vmax",
       "left": "10vmax",
       "top": "31vmax"
@@ -55,61 +55,61 @@
     }
   ],
   "hab": [{
-      "url": "/hab/case-04.png",
-      "width": "25vmax",
-      "left": "10vmax",
+      "url": "/hab/welcome.png",
+      "width": "23vmax",
+      "left": "55vmax",
       "top": "10vmax"
     }, {
-      "url": "/hab/case-12.png",
-      "width": "30vmax",
-      "left": "10vmax",
-      "top": "31vmax"
+      "url": "/hab/palms.png",
+      "width": "23vmax",
+      "left": "62vmax",
+      "top": "20vmax"
     }, {
       "url": "/hab/posters.jpg",
-      "width": "50vmax",
-      "left": "40vmax",
-      "top": "7vmax"
-    }, {
-      "url": "/hab/case-02.png",
-      "width": "26vmax",
-      "left": "49vmax",
-      "top": "18vmax"
-    }, {
-      "url": "/hab/case-10.png",
-      "width": "25vmax",
-      "left": "60vmax",
+      "width": "45vmax",
+      "left": "45vmax",
       "top": "35vmax"
     }, {
-      "url": "/hab/case-05.png",
+      "url": "/hab/pencils.png",
+      "width": "45vmax",
+      "left": "10vmax",
+      "top": "20vmax"
+    }, {
+      "url": "/hab/book.png",
       "width": "25vmax",
-      "left": "60vmax",
-      "top": "35vmax"
+      "left": "13vmax",
+      "top": "10vmax"
+    }, {
+      "url": "/hab/phones.png",
+      "width": "40vmax",
+      "left": "10vmax",
+      "top": "37vmax"
     }],
     "sherpa": [{
         "url": "/sherpa/sherpa-07.jpg",
-        "width": "25vmax",
+        "width": "30vmax",
         "left": "10vmax",
         "top": "10vmax"
       }, {
         "url": "/sherpa/sherpa-03.jpg",
-        "width": "30vmax",
-        "left": "10vmax",
-        "top": "31vmax"
-      }, {
-        "url": "/sherpa/sherpa-04.jpg",
-        "width": "50vmax",
-        "left": "40vmax",
-        "top": "7vmax"
+        "width": "60vmax",
+        "left": "20vmax",
+        "top": "20vmax"
       }, {
         "url": "/sherpa/sherpa-11.png",
         "width": "26vmax",
-        "left": "49vmax",
-        "top": "18vmax"
+        "left": "10vmax",
+        "top": "40vmax"
+      }, {
+        "url": "/sherpa/sherpa-04.jpg",
+        "width": "30vmax",
+        "left": "55vmax",
+        "top": "43vmax"
       }, {
         "url": "/sherpa/sherpa-10.jpg",
-        "width": "25vmax",
-        "left": "60vmax",
-        "top": "35vmax"
+        "width": "20vmax",
+        "left": "70vmax",
+        "top": "10vmax"
       }]
   }
 }

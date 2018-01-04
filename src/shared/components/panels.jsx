@@ -80,22 +80,23 @@ class Panels extends React.Component {
     this.scroll();
   }
 
-  scrollToNextProject() {
-
+  scrollToNextProject = () => {
+    const docHeight = document.getElementById('panels').scrollHeight;
+    const panelHeight = docHeight / (this.maxIndex + 1);
+    const height = this.modifyIndex(this.state.index, 1) * panelHeight;
+    scroll.top(document.getElementById('panels'), height, { duration: 500 });
   }
 
-  scroll = () => {
-    const docHeight = document.body.scrollHeight;
-    const height = this.state.index * docHeight;
-    scroll.top(document.getElementById('panels'), height, { duration: 1000 });
-  }
-
-  onScroll = () => {
+  getCurrentIndex() {
     const scrollTop = document.getElementById('panels').scrollTop + 600;
     const docHeight = document.getElementById('panels').scrollHeight;
     const currentIndex = Math.floor(scrollTop / docHeight * (this.maxIndex + 1));
+    return currentIndex;
+  }
+
+  onScroll = () => {
     this.setState({
-      index: currentIndex
+      index: this.getCurrentIndex()
     })
   }
 
