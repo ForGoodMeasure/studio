@@ -11419,9 +11419,11 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           _panels2.default,
           { cursorUrl: imgUrl('view-work-cursor.png') },
+          _react2.default.createElement(_panel2.default, { empty: true }),
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'rad') }),
+          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'hab') }),
           _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'sherpa') }),
           _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'sex') }),
-          _react2.default.createElement(_panel2.default, { images: localContext.getContent('panels', 'rad') }),
           _react2.default.createElement(_panel2.default, { empty: true })
         )
       );
@@ -11448,7 +11450,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 50%;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n'], ['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 50%;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 30%;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n'], ['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 30%;\n  .tilt-element {\n    transform-style: preserve-3d;\n  }\n']);
 
 var _react = __webpack_require__(1);
 

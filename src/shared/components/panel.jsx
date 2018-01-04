@@ -11,7 +11,7 @@ const Style = PxSection.extend`
   width: 100vw;
   background: ${ p => p.color };
   display: block;
-  margin-bottom: 50%;
+  margin-bottom: 30%;
   .tilt-element {
     transform-style: preserve-3d;
   }

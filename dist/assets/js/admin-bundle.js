@@ -6831,8 +6831,6 @@ var _adminPageBridge = __webpack_require__(26);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -6842,11 +6840,170 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var contentSchema = {
-  $schema: 'http://json-schema.org/draft-04/schema#',
   definitions: {},
-  id: 'http://example.com/example.json',
-  properties: {},
-  type: 'object'
+  $schema: 'http://json-schema.org/draft-06/schema#',
+  $id: 'http://example.com/example.json',
+  type: 'object',
+  properties: {
+    panels: {
+      $id: '/properties/panels',
+      type: 'object',
+      properties: {
+        rad: {
+          $id: '/properties/panels/properties/rad',
+          type: 'array',
+          items: {
+            $id: '/properties/panels/properties/rad/items',
+            type: 'object',
+            properties: {
+              url: {
+                $id: '/properties/panels/properties/rad/items/properties/url',
+                type: 'string',
+                title: 'Url',
+                'default': '',
+                examples: ['/rad/title.png']
+              },
+              width: {
+                $id: '/properties/panels/properties/rad/items/properties/width',
+                type: 'string',
+                title: 'Width',
+                'default': '',
+                examples: ['25vmax']
+              },
+              left: {
+                $id: '/properties/panels/properties/rad/items/properties/left',
+                type: 'string',
+                title: 'Left',
+                'default': '',
+                examples: ['10vmax']
+              },
+              top: {
+                $id: '/properties/panels/properties/rad/items/properties/top',
+                type: 'string',
+                title: 'Top',
+                'default': '',
+                examples: ['10vmax']
+              }
+            }
+          }
+        },
+        sex: {
+          $id: '/properties/panels/properties/sex',
+          type: 'array',
+          items: {
+            $id: '/properties/panels/properties/sex/items',
+            type: 'object',
+            properties: {
+              url: {
+                $id: '/properties/panels/properties/sex/items/properties/url',
+                type: 'string',
+                title: 'Url',
+                'default': '',
+                examples: ['/sex/condom.jpg']
+              },
+              width: {
+                $id: '/properties/panels/properties/sex/items/properties/width',
+                type: 'string',
+                title: 'Width',
+                'default': '',
+                examples: ['25vmax']
+              },
+              left: {
+                $id: '/properties/panels/properties/sex/items/properties/left',
+                type: 'string',
+                title: 'Left',
+                'default': '',
+                examples: ['50vmax']
+              },
+              top: {
+                $id: '/properties/panels/properties/sex/items/properties/top',
+                type: 'string',
+                title: 'Top',
+                'default': '',
+                examples: ['10vmax']
+              }
+            }
+          }
+        },
+        hab: {
+          $id: '/properties/panels/properties/hab',
+          type: 'array',
+          items: {
+            $id: '/properties/panels/properties/hab/items',
+            type: 'object',
+            properties: {
+              url: {
+                $id: '/properties/panels/properties/hab/items/properties/url',
+                type: 'string',
+                title: 'Url',
+                'default': '',
+                examples: ['/hab/welcome.png']
+              },
+              width: {
+                $id: '/properties/panels/properties/hab/items/properties/width',
+                type: 'string',
+                title: 'Width',
+                'default': '',
+                examples: ['23vmax']
+              },
+              left: {
+                $id: '/properties/panels/properties/hab/items/properties/left',
+                type: 'string',
+                title: 'Left',
+                'default': '',
+                examples: ['55vmax']
+              },
+              top: {
+                $id: '/properties/panels/properties/hab/items/properties/top',
+                type: 'string',
+                title: 'Top',
+                'default': '',
+                examples: ['10vmax']
+              }
+            }
+          }
+        },
+        sherpa: {
+          $id: '/properties/panels/properties/sherpa',
+          type: 'array',
+          items: {
+            $id: '/properties/panels/properties/sherpa/items',
+            type: 'object',
+            properties: {
+              url: {
+                $id: '/properties/panels/properties/sherpa/items/properties/url',
+                type: 'string',
+                title: 'Url',
+                'default': '',
+                examples: ['/sherpa/sherpa-07.jpg']
+              },
+              width: {
+                $id: '/properties/panels/properties/sherpa/items/properties/width',
+                type: 'string',
+                title: 'Width',
+                'default': '',
+                examples: ['30vmax']
+              },
+              left: {
+                $id: '/properties/panels/properties/sherpa/items/properties/left',
+                type: 'string',
+                title: 'Left',
+                'default': '',
+                examples: ['10vmax']
+              },
+              top: {
+                $id: '/properties/panels/properties/sherpa/items/properties/top',
+                type: 'string',
+                title: 'Top',
+                'default': '',
+                examples: ['10vmax']
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 };
 
 
@@ -6861,9 +7018,46 @@ var Index = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    _this.state = {
-      path: 'home'
+    _this.onFormChange = function (e) {
+      var content = window.__locals__.content;
+      // Merge in modified content
+      var modifiedContent = _extends({}, content, e.formData);
+      var data = JSON.stringify({
+        topic: '__refresh_content',
+        content: modifiedContent
+      });
+      _this.refs.viewerIframe.contentWindow.postMessage(data, '*');
     };
+
+    _this.onFormSubmit = function (e) {
+      if (!window.confirm("Are you sure? This will save changes to the staging server.")) {
+        return;
+      }
+      _superagent2.default.post(_this.context.localContext.resourceUrl('/admin/content')).send({
+        data: e.formData,
+        path: ""
+      }).end(function (err, res) {
+        if (err) {
+          return window.alert('There was an error saving the content.');
+        }
+        window.alert('Content successfully saved');
+        console.log(err, res);
+      });
+    };
+
+    _this.onPublishClick = function () {
+      if (!window.confirm("Are you sure? This will publish your changes to the production website.")) {
+        return;
+      }
+      _superagent2.default.post(_this.context.localContext.resourceUrl('/admin/publish')).end(function (err, res) {
+        if (err) {
+          return window.alert('There was an error publishing the content.');
+        }
+        window.alert('Content successfully published!');
+        console.log(err, res);
+      });
+    };
+
     return _this;
   }
 
@@ -6875,71 +7069,18 @@ var Index = function (_React$Component) {
   }, {
     key: 'getSchema',
     value: function getSchema() {
-      var properties = _dotty2.default.get(contentSchema, 'properties.' + this.state.path + '.properties') || [];
-      return _extends({}, contentSchema, {
-        properties: properties
-      });
+      console.log(contentSchema);
+      return contentSchema;
     }
   }, {
     key: 'getValues',
     value: function getValues() {
       var content = window.__locals__.content;
-      return content[this.state.path];
+      return content;
     }
   }, {
     key: 'onIframeRouteChange',
-    value: function onIframeRouteChange(e) {
-      var data = (0, _adminPageBridge.tryParse)(e.data);
-      if (data.topic === '__viewer_route_change') {
-        var newPath = data.path === '' ? 'home' : data.path;
-        this.setState({
-          path: newPath
-        });
-      }
-    }
-  }, {
-    key: 'onFormChange',
-    value: function onFormChange(e) {
-      var content = window.__locals__.content;
-      // Merge in modified content
-      var modifiedContent = _extends({}, content, _defineProperty({}, this.state.path, e.formData));
-      var data = JSON.stringify({
-        topic: '__refresh_content',
-        content: modifiedContent
-      });
-      this.refs.viewerIframe.contentWindow.postMessage(data, '*');
-    }
-  }, {
-    key: 'onFormSubmit',
-    value: function onFormSubmit(e) {
-      if (!window.confirm("Are you sure? This will save changes to the staging server.")) {
-        return;
-      }
-      _superagent2.default.post(this.context.localContext.resourceUrl('/admin/content')).send({
-        data: e.formData,
-        path: this.state.path
-      }).end(function (err, res) {
-        if (err) {
-          return window.alert('There was an error saving the content.');
-        }
-        window.alert('Content successfully saved');
-        console.log(err, res);
-      });
-    }
-  }, {
-    key: 'onPublishClick',
-    value: function onPublishClick() {
-      if (!window.confirm("Are you sure? This will publish your changes to the production website.")) {
-        return;
-      }
-      _superagent2.default.post(this.context.localContext.resourceUrl('/admin/publish')).end(function (err, res) {
-        if (err) {
-          return window.alert('There was an error publishing the content.');
-        }
-        window.alert('Content successfully published!');
-        console.log(err, res);
-      });
-    }
+    value: function onIframeRouteChange(e) {}
   }, {
     key: 'render',
     value: function render() {

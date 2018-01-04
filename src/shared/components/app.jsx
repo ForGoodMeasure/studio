@@ -25,9 +25,11 @@ class App extends React.Component {
     return (
       <Style>
         <Panels cursorUrl={ imgUrl('view-work-cursor.png') }>
+          <Panel empty />
+          <Panel images={ localContext.getContent('panels', 'rad') } />
+          <Panel images={ localContext.getContent('panels', 'hab') } />
           <Panel images={ localContext.getContent('panels', 'sherpa') } />
           <Panel images={ localContext.getContent('panels', 'sex') } />
-          <Panel images={ localContext.getContent('panels', 'rad') } />
           <Panel empty />
         </Panels>
       </Style>

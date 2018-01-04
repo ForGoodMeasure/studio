@@ -39,9 +39,6 @@ class Index extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      path: 'home'
-    }
   }
 
   componentDidMount() {
@@ -49,37 +46,25 @@ class Index extends React.Component {
   }
 
   getSchema() {
-    const properties = dotty.get(
-      contentSchema,
-      `properties.${ this.state.path }.properties`
-    ) || [];
-    return {
-      ...contentSchema,
-      properties
-    };
+    console.log(contentSchema);
+    return contentSchema;
   }
 
   getValues() {
     const content = window.__locals__.content;
-    return content[this.state.path];
+    return content;
   }
 
   onIframeRouteChange(e) {
-    const data = tryParse(e.data);
-    if (data.topic === '__viewer_route_change') {
-      const newPath = data.path === '' ? 'home' : data.path;
-      this.setState({
-        path: newPath
-      });
-    }
+
   }
 
-  onFormChange(e) {
+  onFormChange = (e) => {
     const content = window.__locals__.content;
     // Merge in modified content
     const modifiedContent = {
       ...content,
-      [this.state.path]: e.formData
+      ...e.formData
     };
     const data = JSON.stringify({
       topic: '__refresh_content',
@@ -88,7 +73,7 @@ class Index extends React.Component {
     this.refs.viewerIframe.contentWindow.postMessage(data, '*');
   }
 
-  onFormSubmit(e) {
+  onFormSubmit = (e) => {
     if (!window.confirm("Are you sure? This will save changes to the staging server.")) {
       return;
     }
@@ -96,7 +81,7 @@ class Index extends React.Component {
       .post(this.context.localContext.resourceUrl('/admin/content'))
       .send({
         data: e.formData,
-        path: this.state.path
+        path: ""
       })
       .end((err, res) => {
         if (err) {
@@ -107,7 +92,7 @@ class Index extends React.Component {
       });
   }
 
-  onPublishClick() {
+  onPublishClick = () => {
     if (!window.confirm("Are you sure? This will publish your changes to the production website.")) {
       return;
     }
