@@ -12,12 +12,14 @@ const RAD_BLUE = "#38404b";
 const HAB_GREEN = "#043e2f";
 const SHERP_GRAY = '#333334';
 
-const Style = Px.extend`
-  position: relative;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  cursor: none;
+const Style = styled.div`
+  #panels {
+    position: relative;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    cursor: none;
+  }
   .cursor {
     transition:
       top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
@@ -104,8 +106,8 @@ class Panels extends React.Component {
       isScrolling = true;
     }
     this.setState({
-      cursorX: e.clientX,
-      cursorY: scrollTop + e.clientY,
+      cursorX: e.pageX,
+      cursorY: e.pageY,
       isScrolling
     });
   }
@@ -139,29 +141,29 @@ class Panels extends React.Component {
     const nextIndex = this.modifyIndex(index, 1);
 
     return (
-      <div>
+      <Style
+        onMouseMove={ this.onMouseMove }
+        onScroll={ this.onScroll }
+        cursorUrl={ this.props.cursorUrl }
+      >
+        { this.state.cursorX && <div className="cursor" style={{
+          top: this.state.cursorY,
+          left: this.state.cursorX
+        }}/> }
         <Background
-          cursorUrl={ this.props.cursorUrl }
           bgColor={ this.getBgColor() }
           textColor={ this.getTextColor() }
         />
-        <Style
+        <Px
           maxIndex={ this.maxIndex }
           onClick={ this.scrollToNextProject }
-          onMouseMove={ this.onMouseMove }
-          onScroll={ this.onScroll }
-          cursorUrl={ this.props.cursorUrl }
           id="panels"
         >
-          { this.state.cursorX && <div className="cursor" style={{
-            top: this.state.cursorY,
-            left: this.state.cursorX
-          }}/> }
           {
             childList
           }
-        </Style>
-      </div>
+        </Px>
+      </Style>
     );
   }
 };

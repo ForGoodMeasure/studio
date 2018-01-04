@@ -11539,8 +11539,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n  height: 100vh;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  cursor: none;\n  .cursor {\n    transition:\n      top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),\n      opacity 600ms ease-in;\n    height: 6em;\n    width: 6em;\n    position: fixed;\n    z-index: 10;\n    background: url(\'', '\');\n    background-size: cover;\n    pointer-events:none;\n  }\n  .nav {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    text-align: center;\n  }\n'], ['\n  position: relative;\n  height: 100vh;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  cursor: none;\n  .cursor {\n    transition:\n      top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),\n      opacity 600ms ease-in;\n    height: 6em;\n    width: 6em;\n    position: fixed;\n    z-index: 10;\n    background: url(\'', '\');\n    background-size: cover;\n    pointer-events:none;\n  }\n  .nav {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    text-align: center;\n  }\n']);
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -11575,14 +11573,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 var FGM_GRAY = "#383838";
 var RAD_BLUE = "#38404b";
 var HAB_GREEN = "#043e2f";
 var SHERP_GRAY = '#333334';
 
-var Style = _parallax.Px.extend(_templateObject, function (p) {
+var Style = _styledComponents2.default.div.withConfig({
+  displayName: 'panels__Style'
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:scroll;cursor:none;}.cursor{transition:top 400ms cubic-bezier(0.175,0.885,0.32,1.275),opacity 600ms ease-in;height:6em;width:6em;position:fixed;z-index:10;background:url(\'', '\');background-size:cover;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}'], function (p) {
   return p.cursorUrl;
 });
 
@@ -11632,8 +11630,8 @@ var Panels = function (_React$Component) {
         isScrolling = true;
       }
       _this.setState({
-        cursorX: e.clientX,
-        cursorY: scrollTop + e.clientY,
+        cursorX: e.pageX,
+        cursorY: e.pageY,
         isScrolling: isScrolling
       });
     };
@@ -11679,27 +11677,27 @@ var Panels = function (_React$Component) {
       var nextIndex = this.modifyIndex(index, 1);
 
       return _react2.default.createElement(
-        'div',
-        null,
+        Style,
+        {
+          onMouseMove: this.onMouseMove,
+          onScroll: this.onScroll,
+          cursorUrl: this.props.cursorUrl
+        },
+        this.state.cursorX && _react2.default.createElement('div', { className: 'cursor', style: {
+            top: this.state.cursorY,
+            left: this.state.cursorX
+          } }),
         _react2.default.createElement(_background2.default, {
-          cursorUrl: this.props.cursorUrl,
           bgColor: this.getBgColor(),
           textColor: this.getTextColor()
         }),
         _react2.default.createElement(
-          Style,
+          _parallax.Px,
           {
             maxIndex: this.maxIndex,
             onClick: this.scrollToNextProject,
-            onMouseMove: this.onMouseMove,
-            onScroll: this.onScroll,
-            cursorUrl: this.props.cursorUrl,
             id: 'panels'
           },
-          this.state.cursorX && _react2.default.createElement('div', { className: 'cursor', style: {
-              top: this.state.cursorY,
-              left: this.state.cursorX
-            } }),
           childList
         )
       );
