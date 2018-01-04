@@ -17,14 +17,12 @@ const Style = styled.div`
   }
 `;
 
-
 class App extends React.Component {
   render() {
     const localContext = this.context.localContext;
     const imgUrl = url => localContext.assetUrl(`/images/${ url }`);
     return (
       <Style>
-        <Background cursorUrl={ imgUrl('view-work-cursor.png') } />
         <Panels cursorUrl={ imgUrl('view-work-cursor.png') }>
           <Panel empty />
           <Panel images={ localContext.getContent('panels', 'rad') } />

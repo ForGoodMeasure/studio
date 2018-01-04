@@ -29,7 +29,7 @@ const Panel = (props, { localContext }) => {
     return <Style />
   }
   return (
-    <Style { ...props } >
+    <Style { ...props } className="panel">
       <Tilt
         className="tilt-element"
         options={{ max : 5, scale: 1, perspective: 100000, axis: 'Y' }}

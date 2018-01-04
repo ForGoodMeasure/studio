@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import scroll from 'scroll';
 
-import Controls from './controls';
+import Background from './background';
 import { Px } from '../style/parallax';
+
+const FGM_GRAY = "#383838";
+const RAD_BLUE = "#38404b";
 
 const Style = Px.extend`
   position: relative;
@@ -15,7 +18,7 @@ const Style = Px.extend`
   cursor: none;
   .cursor {
     transition:
-      top 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
       opacity 600ms ease-in;
     height: 6em;
     width: 6em;
@@ -24,6 +27,13 @@ const Style = Px.extend`
     background: url('${ p => p.cursorUrl }');
     background-size: cover;
     pointer-events:none;
+  }
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
   }
 `;
 
@@ -37,6 +47,7 @@ class Panels extends React.Component {
       cursorX: null,
       cursorY: null
     };
+    this.childList = React.Children.toArray(props.children);
   }
 
   modifyIndex(value, operator) {
@@ -65,10 +76,23 @@ class Panels extends React.Component {
     this.scroll();
   }
 
+  scrollToNextProject() {
+
+  }
+
   scroll = () => {
     const docHeight = document.body.scrollHeight;
     const height = this.state.index * docHeight;
     scroll.top(document.getElementById('panels'), height, { duration: 1000 });
+  }
+
+  onScroll = () => {
+    const scrollTop = document.getElementById('panels').scrollTop + 600;
+    const docHeight = document.getElementById('panels').scrollHeight;
+    const currentIndex = Math.floor(scrollTop / docHeight * (this.maxIndex + 1));
+    this.setState({
+      index: currentIndex
+    })
   }
 
   onMouseMove = e => {
@@ -84,30 +108,52 @@ class Panels extends React.Component {
     });
   }
 
+  getBgColor = () => {
+    return ([
+      FGM_GRAY,
+      RAD_BLUE,
+      'black'
+    ])[this.state.index]
+  }
+
+  getTextColor = () => {
+    return ([
+      'white',
+      'white',
+      'white'
+    ])[this.state.index]
+  }
+
   render() {
-    const childList = React.Children.toArray(this.props.children);
+    const childList = this.childList;
     const index = this.state.index;
     const prevIndex = this.modifyIndex(index, -1);
     const nextIndex = this.modifyIndex(index, 1);
 
     return (
-      <Style
-        offset={ this.state.index }
-        maxIndex={ this.maxIndex }
-        onClick={ this.decrement }
-        onMouseMove={ this.onMouseMove }
-        cursorUrl={ this.props.cursorUrl }
-        id="panels"
-        ref="panels"
-      >
-        { this.state.cursorX && <div className="cursor" style={{
-          top: this.state.cursorY,
-          left: this.state.cursorX
-        }}/> }
-        {
-          childList
-        }
-      </Style>
+      <div>
+        <Background
+          cursorUrl={ this.props.cursorUrl }
+          bgColor={ this.getBgColor() }
+          textColor={ this.getTextColor() }
+        />
+        <Style
+          maxIndex={ this.maxIndex }
+          onClick={ this.scrollToNextProject }
+          onMouseMove={ this.onMouseMove }
+          onScroll={ this.onScroll }
+          cursorUrl={ this.props.cursorUrl }
+          id="panels"
+        >
+          { this.state.cursorX && <div className="cursor" style={{
+            top: this.state.cursorY,
+            left: this.state.cursorX
+          }}/> }
+          {
+            childList
+          }
+        </Style>
+      </div>
     );
   }
 };

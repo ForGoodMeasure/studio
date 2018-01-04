@@ -12,6 +12,10 @@ const Style = styled.div`
   flex-direction: column;
   justify-content: center;
   font-size: 1.6em;
+  background: ${ p => p.bgColor };
+  color: ${ p => p.textColor };
+  -webkit-text-stroke-color: ${ p => p.textColor };
+  transition: background 1s, color 1s, -webkit-text-stroke-color 1s;
   .cursor {
     height: 6em;
     width: 6em;
@@ -29,34 +33,16 @@ const Style = styled.div`
   }
 `
 
-
 class Background extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      cursorX: null,
-      cursorY: null
-    };
-  }
-
-  onMouseMove = e => {
-    console.log('YO');
-    this.setState({
-      cursorX: e.clientX,
-      cursorY: e.clientY
-    });
-  }
 
   render() {
     return (
       <Style
         cursorUrl={ this.props.cursorUrl }
+        onMouseMove={ this.onMouseMove }
+        textColor={ this.props.textColor }
+        bgColor={ this.props.bgColor}
       >
-        { this.state.cursorX && <div className="cursor" style={{
-          top: this.state.cursorY,
-          left: this.state.cursorX
-        }}/> }
         <h1>FOR GOOD MEASURE</h1>
         <p>
           is a creative studio in Brooklyn, New York building brands and fresh websites.
