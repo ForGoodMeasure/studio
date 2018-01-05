@@ -28,6 +28,7 @@ const Panel = (props, { localContext }) => {
   if (props.empty) {
     return <Style />
   }
+  const images = localContext.getContent('panels', props.projectId);
   return (
     <Style { ...props } className="panel">
       <Tilt
@@ -36,8 +37,8 @@ const Panel = (props, { localContext }) => {
         style={{ height: '100%', width: '100%' }}
       >
         {
-          props.images.map( (img, i) => (
-            <PxLayer depth={ 6 * Math.floor( i - props.images.length / 2) } key={ i } >
+          images.map( (img, i) => (
+            <PxLayer depth={ 6 * Math.floor( i - images.length / 2) } key={ i } >
               <Block
                 src={ localContext.assetUrl(`images${ img.url }`) }
                 width={ img.width }

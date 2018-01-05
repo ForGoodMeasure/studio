@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 
 const SVG = (props, { localContext }) => {
+  if (!props.path) {
+    return <div/>;
+  }
   const Style = styled.div`
     svg g {
       stroke: ${ props.stroke };

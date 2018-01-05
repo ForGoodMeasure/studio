@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="146px" height="146px" viewBox="0 0 146 146" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-45.000000, -58.000000)">
+        <g id="Group" transform="translate(45.000000, 58.000000)">
+            <circle id="Oval" fill="#D8D8D8" cx="73" cy="73" r="73"></circle>
+            <text id="See-Our-Work" font-family="StyreneBWeb-Medium, Styrene B Web" font-size="24" font-weight="400" letter-spacing="1.133333" fill="#000000">
+                <tspan x="22.4253345" y="53">See Our </tspan>
+                <tspan x="40.193334" y="84">Work</tspan>
+            </text>
+            <polygon id="→" fill="#000000" transform="translate(72.808623, 111.398438) rotate(-270.000000) translate(-72.808623, -111.398438) " points="88.2070603 111.398438 79.2691058 120.336392 79.2691058 113.03738 57.4101853 113.03738 57.4101853 109.740437 79.2691058 109.740437 79.2881633 102.460483"></polygon>
+        </g>
+    </g>
+</svg>

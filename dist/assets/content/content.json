@@ -1,1 +1,136 @@
-{"panels":{"rad":[{"url":"/rad/title.png","width":"25vmax","left":"10vmax","top":"10vmax"},{"url":"/rad/machines.jpg","width":"45vmax","left":"10vmax","top":"31vmax"},{"url":"/rad/spread.jpg","width":"50vmax","left":"40vmax","top":"7vmax"},{"url":"/rad/poster.png","width":"26vmax","left":"49vmax","top":"18vmax"},{"url":"/rad/signs.jpg","width":"25vmax","left":"60vmax","top":"35vmax"}],"sex":[{"url":"/sex/condom.jpg","width":"22vmax","left":"58vmax","top":"15vmax"},{"url":"/sex/underwear.jpg","width":"20vmax","left":"12vmax","top":"15vmax"},{"url":"/sex/posters.jpg","width":"35vmax","left":"25vmax","top":"10vmax"},{"url":"/sex/ipad.png","width":"45vmax","left":"10vmax","top":"30vmax"},{"url":"/sex/typecrop.png","width":"25vmax","left":"50vmax","top":"5vmax"},{"url":"/sex/dildo.png","width":"25vmax","left":"27vmax","top":"38vmax"}],"hab":[{"url":"/hab/welcome.png","width":"23vmax","left":"55vmax","top":"10vmax"},{"url":"/hab/palms.png","width":"23vmax","left":"62vmax","top":"20vmax"},{"url":"/hab/posters.jpg","width":"45vmax","left":"45vmax","top":"35vmax"},{"url":"/hab/pencils.png","width":"45vmax","left":"10vmax","top":"20vmax"},{"url":"/hab/book.png","width":"25vmax","left":"13vmax","top":"10vmax"},{"url":"/hab/phones.png","width":"40vmax","left":"10vmax","top":"37vmax"}],"sherpa":[{"url":"/sherpa/sherpa-07.jpg","width":"30vmax","left":"10vmax","top":"10vmax"},{"url":"/sherpa/sherpa-03.jpg","width":"60vmax","left":"20vmax","top":"20vmax"},{"url":"/sherpa/sherpa-11.png","width":"26vmax","left":"10vmax","top":"40vmax"},{"url":"/sherpa/sherpa-04.jpg","width":"30vmax","left":"55vmax","top":"43vmax"},{"url":"/sherpa/sherpa-10.jpg","width":"20vmax","left":"70vmax","top":"10vmax"}]}}
+{
+    "panels": {
+        "rad": [{
+            "url": "/rad/title.png",
+            "width": "25vw",
+            "left": "10vw",
+            "top": "10vw"
+        }, {
+            "url": "/rad/machines.jpg",
+            "width": "45vw",
+            "left": "10vw",
+            "top": "31vw"
+        }, {
+            "url": "/rad/spread.jpg",
+            "width": "50vw",
+            "left": "40vw",
+            "top": "7vw"
+        }, {
+            "url": "/rad/poster.png",
+            "width": "26vw",
+            "left": "49vw",
+            "top": "18vw"
+        }, {
+            "url": "/rad/signs.jpg",
+            "width": "25vw",
+            "left": "60vw",
+            "top": "35vw"
+        }],
+        "sex": [{
+            "url": "/sex/condom.jpg",
+            "width": "22vw",
+            "left": "58vw",
+            "top": "15vw"
+        }, {
+            "url": "/sex/underwear.jpg",
+            "width": "20vw",
+            "left": "12vw",
+            "top": "15vw"
+        }, {
+            "url": "/sex/posters.jpg",
+            "width": "35vw",
+            "left": "25vw",
+            "top": "10vw"
+        }, {
+            "url": "/sex/ipad.png",
+            "width": "45vw",
+            "left": "10vw",
+            "top": "30vw"
+        }, {
+            "url": "/sex/typecrop.png",
+            "width": "25vw",
+            "left": "50vw",
+            "top": "5vw"
+        }, {
+            "url": "/sex/dildo.png",
+            "width": "25vw",
+            "left": "27vw",
+            "top": "38vw"
+        }],
+        "hab": [{
+            "url": "/hab/welcome.png",
+            "width": "23vw",
+            "left": "55vw",
+            "top": "10vw"
+        }, {
+            "url": "/hab/palms.png",
+            "width": "23vw",
+            "left": "62vw",
+            "top": "20vw"
+        }, {
+            "url": "/hab/posters.jpg",
+            "width": "45vw",
+            "left": "45vw",
+            "top": "35vw"
+        }, {
+            "url": "/hab/pencils.png",
+            "width": "45vw",
+            "left": "10vw",
+            "top": "20vw"
+        }, {
+            "url": "/hab/book.png",
+            "width": "25vw",
+            "left": "13vw",
+            "top": "10vw"
+        }, {
+            "url": "/hab/phones.png",
+            "width": "40vw",
+            "left": "10vw",
+            "top": "37vw"
+        }],
+        "sherpa": [{
+            "url": "/sherpa/sherpa-07.jpg",
+            "width": "30vw",
+            "left": "10vw",
+            "top": "10vw"
+        }, {
+            "url": "/sherpa/sherpa-03.jpg",
+            "width": "60vw",
+            "left": "20vw",
+            "top": "20vw"
+        }, {
+            "url": "/sherpa/sherpa-11.png",
+            "width": "26vw",
+            "left": "10vw",
+            "top": "40vw"
+        }, {
+            "url": "/sherpa/sherpa-04.jpg",
+            "width": "30vw",
+            "left": "55vw",
+            "top": "43vw"
+        }, {
+            "url": "/sherpa/sherpa-10.jpg",
+            "width": "20vw",
+            "left": "70vw",
+            "top": "10vw"
+        }]
+    },
+    "cursors": {
+      "rad": {
+        "text": "We did Branding, Illustration, and Web Design for Radical Machines, an Exhibit on Chinese Typewriter History",
+        "size": ""
+      },
+      "sex": {
+        "text": "We did Photography, Typography, Branding and Packaging for Sherpa Teas",
+        "size": ""
+      },
+      "hab": {
+        "text": "We Branded and Art-Directed a new hotel venture called Habitas",
+        "size": ""
+      },
+      "sherpa": {
+        "text": "We did Graphic Design, Web Design, and Art Direction for The Sex Reporter, A sex-positive online publication",
+        "size": ""
+      }
+    }
+}

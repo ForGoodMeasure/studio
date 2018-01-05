@@ -8,7 +8,6 @@ import Panels from './panels';
 import { localContextType } from '../util';
 import { Px } from '../style/parallax';
 import Background from './background';
-import Window from './window';
 
 const Style = styled.div`
   .heading {
@@ -19,18 +18,15 @@ const Style = styled.div`
 
 class App extends React.Component {
   render() {
-    const localContext = this.context.localContext;
-    const imgUrl = url => localContext.assetUrl(`/images/${ url }`);
-
     return (
       <Style>
-        <Panels cursorUrl={ imgUrl('view-work-cursor.png') }>
-          <Panel empty />
-          <Panel images={ localContext.getContent('panels', 'rad') } />
-          <Panel images={ localContext.getContent('panels', 'hab') } />
-          <Panel images={ localContext.getContent('panels', 'sherpa') } />
-          <Panel images={ localContext.getContent('panels', 'sex') } />
-          <Panel empty />
+        <Panels>
+          <Panel empty cursor="hi-cursor.svg" topCursor="hi-cursor.svg" bottomCursor="see-work-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel empty cursor="hi-cursor.svg" bottomCursor="hi-cursor.svg" />
         </Panels>
       </Style>
     );

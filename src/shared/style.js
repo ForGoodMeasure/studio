@@ -27,12 +27,13 @@ export default localContext => injectGlobal`
     color: red;
     src: url('/fonts/StyreneBold.woff2');
   }
+  html {
+    cursor: none;
+  }
   body {
     font-size: 18px;
     font-family: 'Styrene', sans-serif;
-    cursor: none;
   }
-
   body * {
     margin: 0;
   }

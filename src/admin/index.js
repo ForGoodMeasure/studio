@@ -46,7 +46,6 @@ class Index extends React.Component {
   }
 
   getSchema() {
-    console.log(contentSchema);
     return contentSchema;
   }
 

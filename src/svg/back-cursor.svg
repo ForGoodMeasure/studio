@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="146px" height="146px" viewBox="0 0 146 146" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group Copy 10</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard-Copy-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-139.000000, -1982.000000)">
+        <g id="Group-Copy-10" transform="translate(139.000000, 1982.000000)">
+            <circle id="Oval" fill="#D8D8D8" cx="73" cy="73" r="73"></circle>
+            <text id="Back" font-family="StyreneBWeb-Medium, Styrene B Web" font-size="24" font-weight="400" letter-spacing="1.133333" fill="#000000">
+                <tspan x="40.613334" y="95">Back</tspan>
+            </text>
+            <polygon id="→" fill="#000000" transform="translate(73.937954, 52.168196) scale(1, -1) rotate(-270.000000) translate(-73.937954, -52.168196) " points="89.3363919 52.168196 80.3984375 61.1061504 80.3984375 53.8071386 58.5395169 53.8071386 58.5395169 50.5101959 80.3984375 50.5101959 80.417495 43.2302415"></polygon>
+        </g>
+    </g>
+</svg>

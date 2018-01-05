@@ -7069,7 +7069,6 @@ var Index = function (_React$Component) {
   }, {
     key: 'getSchema',
     value: function getSchema() {
-      console.log(contentSchema);
       return contentSchema;
     }
   }, {
