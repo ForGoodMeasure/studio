@@ -25,7 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 /*
   Note: locally, the server runs out of 'dist'
 */
-app.use(express.static(`${__dirname}/../assets`))
+app.use("/fonts", express.static(`${__dirname}/../assets/fonts`))
+app.use("/images", express.static(`${__dirname}/../assets/images`))
+app.use("/js", express.static(`${__dirname}/../assets/js`))
 
 app.get('/health', (req, res) => res.send(APP_ID))
 

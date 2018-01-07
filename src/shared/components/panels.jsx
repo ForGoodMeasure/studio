@@ -24,10 +24,7 @@ const Style = styled.div`
   }
   .cursor {
     transition:
-      top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      height 200ms ease-in,
-      width 200ms ease-in,
-      opacity 600ms ease-in;
+      top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 6em;
     width: 6em;
     position: fixed;
@@ -149,7 +146,7 @@ class Panels extends React.Component {
     }
 
     let path = '';
-    let cursorSize = '6em';
+    let cursorSize = '8em';
     const mousePosition = this.state.cursorY / window.innerHeight;
     const selectedChild = this.childList[ this.state.index ];
 
@@ -157,7 +154,6 @@ class Panels extends React.Component {
       path = dotty.get(selectedChild, 'props.topCursor') || "prev-proj-cursor.svg";
     } else if ( mousePosition < 0.8 ) {
       path = dotty.get(selectedChild, 'props.cursor');
-      cursorSize = dotty.get(selectedChild, 'props.cursorSize');
     } else {
       path = dotty.get(selectedChild, 'props.bottomCursor') || "next-proj-cursor.svg";
     }
@@ -184,7 +180,6 @@ class Panels extends React.Component {
         onScroll={ this.onScroll }
         onClick={ this.onClick }
       >
-        { this.getCursor() }
         <Background
           bgColor={ this.getBgColor() }
           textColor={ this.getTextColor() }

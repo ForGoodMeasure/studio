@@ -51,11 +51,6 @@
             "width": "25vw",
             "left": "50vw",
             "top": "5vw"
-        }, {
-            "url": "/sex/dildo.png",
-            "width": "25vw",
-            "left": "27vw",
-            "top": "38vw"
         }],
         "hab": [{
             "url": "/hab/welcome.png",
@@ -114,23 +109,5 @@
             "left": "70vw",
             "top": "10vw"
         }]
-    },
-    "cursors": {
-      "rad": {
-        "text": "We did Branding, Illustration, and Web Design for Radical Machines, an Exhibit on Chinese Typewriter History",
-        "size": ""
-      },
-      "sex": {
-        "text": "We did Photography, Typography, Branding and Packaging for Sherpa Teas",
-        "size": ""
-      },
-      "hab": {
-        "text": "We Branded and Art-Directed a new hotel venture called Habitas",
-        "size": ""
-      },
-      "sherpa": {
-        "text": "We did Graphic Design, Web Design, and Art Direction for The Sex Reporter, A sex-positive online publication",
-        "size": ""
-      }
     }
 }
