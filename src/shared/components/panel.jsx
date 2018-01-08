@@ -18,10 +18,10 @@ const Style = PxSection.extend`
 `;
 
 const Block = styled.img`
-  width: ${ p => p.width };
+  width: ${ p => p.width }vw;
   position: relative;
-  left: ${ p => p.left };
-  top: ${ p => p.top };
+  left: ${ p => p.left }vw;
+  top: ${ p => p.top }vw;
 `;
 
 const Panel = (props, { localContext }) => {

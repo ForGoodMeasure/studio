@@ -49,6 +49,26 @@ class Index extends React.Component {
     return contentSchema;
   }
 
+  getUiSchema() {
+    return {
+      panels: {
+        rad: {
+          items: {
+            width: {
+              "ui:widget": "range"
+            },
+            left: {
+              "ui:widget": "range"
+            },
+            top: {
+              "ui:widget": "range"
+            },
+          }
+        }
+      }
+    }
+  }
+
   getValues() {
     const content = window.__locals__.content;
     return content;
@@ -113,6 +133,7 @@ class Index extends React.Component {
           <Form
             schema={this.getSchema()}
             formData={this.getValues()}
+            uiSchema={this.getUiSchema()}
             onSubmit={this.onFormSubmit}
             onChange={this.onFormChange}
             acceptcharset="ISO-8859-1"
@@ -157,4 +178,4 @@ function renderPage() {
   );
 }
 
-renderPage();
+export default renderPage()

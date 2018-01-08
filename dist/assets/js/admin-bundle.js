@@ -6786,6 +6786,10 @@ function getContent(content, namespace, key) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -6842,161 +6846,103 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 var contentSchema = {
   definitions: {},
   $schema: 'http://json-schema.org/draft-06/schema#',
-  $id: 'http://example.com/example.json',
   type: 'object',
   properties: {
     panels: {
-      $id: '/properties/panels',
       type: 'object',
       properties: {
         rad: {
-          $id: '/properties/panels/properties/rad',
           type: 'array',
           items: {
-            $id: '/properties/panels/properties/rad/items',
             type: 'object',
             properties: {
               url: {
-                $id: '/properties/panels/properties/rad/items/properties/url',
                 type: 'string',
-                title: 'Url',
-                'default': '',
-                examples: ['/rad/title.png']
+                title: 'Url'
               },
               width: {
-                $id: '/properties/panels/properties/rad/items/properties/width',
-                type: 'string',
-                title: 'Width',
-                'default': '',
-                examples: ['25vmax']
+                type: 'integer',
+                title: 'Width'
               },
               left: {
-                $id: '/properties/panels/properties/rad/items/properties/left',
-                type: 'string',
-                title: 'Left',
-                'default': '',
-                examples: ['10vmax']
+                type: 'integer',
+                title: 'Left'
               },
               top: {
-                $id: '/properties/panels/properties/rad/items/properties/top',
-                type: 'string',
-                title: 'Top',
-                'default': '',
-                examples: ['10vmax']
+                type: 'integer',
+                title: 'Top'
               }
             }
           }
         },
         sex: {
-          $id: '/properties/panels/properties/sex',
           type: 'array',
           items: {
-            $id: '/properties/panels/properties/sex/items',
             type: 'object',
             properties: {
               url: {
-                $id: '/properties/panels/properties/sex/items/properties/url',
                 type: 'string',
-                title: 'Url',
-                'default': '',
-                examples: ['/sex/condom.jpg']
+                title: 'Url'
               },
               width: {
-                $id: '/properties/panels/properties/sex/items/properties/width',
-                type: 'string',
-                title: 'Width',
-                'default': '',
-                examples: ['25vmax']
+                type: 'integer',
+                title: 'Width'
               },
               left: {
-                $id: '/properties/panels/properties/sex/items/properties/left',
-                type: 'string',
-                title: 'Left',
-                'default': '',
-                examples: ['50vmax']
+                type: 'integer',
+                title: 'Left'
               },
               top: {
-                $id: '/properties/panels/properties/sex/items/properties/top',
-                type: 'string',
-                title: 'Top',
-                'default': '',
-                examples: ['10vmax']
+                type: 'integer',
+                title: 'Top'
               }
             }
           }
         },
         hab: {
-          $id: '/properties/panels/properties/hab',
           type: 'array',
           items: {
-            $id: '/properties/panels/properties/hab/items',
             type: 'object',
             properties: {
               url: {
-                $id: '/properties/panels/properties/hab/items/properties/url',
                 type: 'string',
-                title: 'Url',
-                'default': '',
-                examples: ['/hab/welcome.png']
+                title: 'Url'
               },
               width: {
-                $id: '/properties/panels/properties/hab/items/properties/width',
-                type: 'string',
-                title: 'Width',
-                'default': '',
-                examples: ['23vmax']
+                type: 'integer',
+                title: 'Width'
               },
               left: {
-                $id: '/properties/panels/properties/hab/items/properties/left',
-                type: 'string',
-                title: 'Left',
-                'default': '',
-                examples: ['55vmax']
+                type: 'integer',
+                title: 'Left'
               },
               top: {
-                $id: '/properties/panels/properties/hab/items/properties/top',
-                type: 'string',
-                title: 'Top',
-                'default': '',
-                examples: ['10vmax']
+                type: 'integer',
+                title: 'Top'
               }
             }
           }
         },
         sherpa: {
-          $id: '/properties/panels/properties/sherpa',
           type: 'array',
           items: {
-            $id: '/properties/panels/properties/sherpa/items',
             type: 'object',
             properties: {
               url: {
-                $id: '/properties/panels/properties/sherpa/items/properties/url',
                 type: 'string',
-                title: 'Url',
-                'default': '',
-                examples: ['/sherpa/sherpa-07.jpg']
+                title: 'Url'
               },
               width: {
-                $id: '/properties/panels/properties/sherpa/items/properties/width',
-                type: 'string',
-                title: 'Width',
-                'default': '',
-                examples: ['30vmax']
+                type: 'integer',
+                title: 'Width'
               },
               left: {
-                $id: '/properties/panels/properties/sherpa/items/properties/left',
-                type: 'string',
-                title: 'Left',
-                'default': '',
-                examples: ['10vmax']
+                type: 'integer',
+                title: 'Left'
               },
               top: {
-                $id: '/properties/panels/properties/sherpa/items/properties/top',
-                type: 'string',
-                title: 'Top',
-                'default': '',
-                examples: ['10vmax']
+                type: 'integer',
+                title: 'Top'
               }
             }
           }
@@ -7072,6 +7018,27 @@ var Index = function (_React$Component) {
       return contentSchema;
     }
   }, {
+    key: 'getUiSchema',
+    value: function getUiSchema() {
+      return {
+        panels: {
+          rad: {
+            items: {
+              width: {
+                "ui:widget": "range"
+              },
+              left: {
+                "ui:widget": "range"
+              },
+              top: {
+                "ui:widget": "range"
+              }
+            }
+          }
+        }
+      };
+    }
+  }, {
     key: 'getValues',
     value: function getValues() {
       var content = window.__locals__.content;
@@ -7092,6 +7059,7 @@ var Index = function (_React$Component) {
           _react2.default.createElement(_reactJsonschemaForm2.default, {
             schema: this.getSchema(),
             formData: this.getValues(),
+            uiSchema: this.getUiSchema(),
             onSubmit: this.onFormSubmit,
             onChange: this.onFormChange,
             acceptcharset: 'ISO-8859-1'
@@ -7135,7 +7103,7 @@ function renderPage() {
   (0, _reactDom.render)(_react2.default.createElement(IndexWithLocalContext), document.getElementById('app-content'));
 }
 
-renderPage();
+exports.default = renderPage();
 
 /***/ }),
 /* 35 */

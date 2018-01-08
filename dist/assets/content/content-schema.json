@@ -16,15 +16,15 @@
                 "title": "Url"
               },
               "width": {
-                "type": "string",
+                "type": "integer",
                 "title": "Width"
               },
               "left": {
-                "type": "string",
+                "type": "integer",
                 "title": "Left"
               },
               "top": {
-                "type": "string",
+                "type": "integer",
                 "title": "Top"
               }
             }
@@ -37,19 +37,18 @@
             "properties": {
               "url": {
                 "type": "string",
-                "format": "number",
                 "title": "Url"
               },
               "width": {
-                "type": "string",
+                "type": "integer",
                 "title": "Width"
               },
               "left": {
-                "type": "string",
+                "type": "integer",
                 "title": "Left"
               },
               "top": {
-                "type": "string",
+                "type": "integer",
                 "title": "Top"
               }
             }
@@ -65,15 +64,15 @@
                 "title": "Url"
               },
               "width": {
-                "type": "string",
+                "type": "integer",
                 "title": "Width"
               },
               "left": {
-                "type": "string",
+                "type": "integer",
                 "title": "Left"
               },
               "top": {
-                "type": "string",
+                "type": "integer",
                 "title": "Top"
               }
             }
@@ -89,15 +88,15 @@
                 "title": "Url"
               },
               "width": {
-                "type": "string",
+                "type": "integer",
                 "title": "Width"
               },
               "left": {
-                "type": "string",
+                "type": "integer",
                 "title": "Left"
               },
               "top": {
-                "type": "string",
+                "type": "integer",
                 "title": "Top"
               }
             }

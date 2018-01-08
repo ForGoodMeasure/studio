@@ -1,193 +1,103 @@
 {
   "definitions": {},
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "http://example.com/example.json",
   "type": "object",
   "properties": {
     "panels": {
-      "$id": "/properties/panels",
       "type": "object",
       "properties": {
         "rad": {
-          "$id": "/properties/panels/properties/rad",
           "type": "array",
           "items": {
-            "$id": "/properties/panels/properties/rad/items",
             "type": "object",
             "properties": {
               "url": {
-                "$id": "/properties/panels/properties/rad/items/properties/url",
                 "type": "string",
-                "title": "Url",
-                "default": "",
-                "examples": [
-                  "/rad/title.png"
-                ]
+                "title": "Url"
               },
               "width": {
-                "$id": "/properties/panels/properties/rad/items/properties/width",
-                "type": "string",
-                "title": "Width",
-                "default": "",
-                "examples": [
-                  "25vmax"
-                ]
+                "type": "integer",
+                "title": "Width"
               },
               "left": {
-                "$id": "/properties/panels/properties/rad/items/properties/left",
-                "type": "string",
-                "title": "Left",
-                "default": "",
-                "examples": [
-                  "10vmax"
-                ]
+                "type": "integer",
+                "title": "Left"
               },
               "top": {
-                "$id": "/properties/panels/properties/rad/items/properties/top",
-                "type": "string",
-                "title": "Top",
-                "default": "",
-                "examples": [
-                  "10vmax"
-                ]
+                "type": "integer",
+                "title": "Top"
               }
             }
           }
         },
         "sex": {
-          "$id": "/properties/panels/properties/sex",
           "type": "array",
           "items": {
-            "$id": "/properties/panels/properties/sex/items",
             "type": "object",
             "properties": {
               "url": {
-                "$id": "/properties/panels/properties/sex/items/properties/url",
                 "type": "string",
-                "title": "Url",
-                "default": "",
-                "examples": [
-                  "/sex/condom.jpg"
-                ]
+                "title": "Url"
               },
               "width": {
-                "$id": "/properties/panels/properties/sex/items/properties/width",
-                "type": "string",
-                "title": "Width",
-                "default": "",
-                "examples": [
-                  "25vmax"
-                ]
+                "type": "integer",
+                "title": "Width"
               },
               "left": {
-                "$id": "/properties/panels/properties/sex/items/properties/left",
-                "type": "string",
-                "title": "Left",
-                "default": "",
-                "examples": [
-                  "50vmax"
-                ]
+                "type": "integer",
+                "title": "Left"
               },
               "top": {
-                "$id": "/properties/panels/properties/sex/items/properties/top",
-                "type": "string",
-                "title": "Top",
-                "default": "",
-                "examples": [
-                  "10vmax"
-                ]
+                "type": "integer",
+                "title": "Top"
               }
             }
           }
         },
         "hab": {
-          "$id": "/properties/panels/properties/hab",
           "type": "array",
           "items": {
-            "$id": "/properties/panels/properties/hab/items",
             "type": "object",
             "properties": {
               "url": {
-                "$id": "/properties/panels/properties/hab/items/properties/url",
                 "type": "string",
-                "title": "Url",
-                "default": "",
-                "examples": [
-                  "/hab/welcome.png"
-                ]
+                "title": "Url"
               },
               "width": {
-                "$id": "/properties/panels/properties/hab/items/properties/width",
-                "type": "string",
-                "title": "Width",
-                "default": "",
-                "examples": [
-                  "23vmax"
-                ]
+                "type": "integer",
+                "title": "Width"
               },
               "left": {
-                "$id": "/properties/panels/properties/hab/items/properties/left",
-                "type": "string",
-                "title": "Left",
-                "default": "",
-                "examples": [
-                  "55vmax"
-                ]
+                "type": "integer",
+                "title": "Left"
               },
               "top": {
-                "$id": "/properties/panels/properties/hab/items/properties/top",
-                "type": "string",
-                "title": "Top",
-                "default": "",
-                "examples": [
-                  "10vmax"
-                ]
+                "type": "integer",
+                "title": "Top"
               }
             }
           }
         },
         "sherpa": {
-          "$id": "/properties/panels/properties/sherpa",
           "type": "array",
           "items": {
-            "$id": "/properties/panels/properties/sherpa/items",
             "type": "object",
             "properties": {
               "url": {
-                "$id": "/properties/panels/properties/sherpa/items/properties/url",
                 "type": "string",
-                "title": "Url",
-                "default": "",
-                "examples": [
-                  "/sherpa/sherpa-07.jpg"
-                ]
+                "title": "Url"
               },
               "width": {
-                "$id": "/properties/panels/properties/sherpa/items/properties/width",
-                "type": "string",
-                "title": "Width",
-                "default": "",
-                "examples": [
-                  "30vmax"
-                ]
+                "type": "integer",
+                "title": "Width"
               },
               "left": {
-                "$id": "/properties/panels/properties/sherpa/items/properties/left",
-                "type": "string",
-                "title": "Left",
-                "default": "",
-                "examples": [
-                  "10vmax"
-                ]
+                "type": "integer",
+                "title": "Left"
               },
               "top": {
-                "$id": "/properties/panels/properties/sherpa/items/properties/top",
-                "type": "string",
-                "title": "Top",
-                "default": "",
-                "examples": [
-                  "10vmax"
-                ]
+                "type": "integer",
+                "title": "Top"
               }
             }
           }

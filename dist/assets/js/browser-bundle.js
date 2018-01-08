@@ -11047,7 +11047,7 @@ function sendMessage(e) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = renderPage;
+exports.default = browserRenderer;
 
 var _farce = __webpack_require__(136);
 
@@ -11093,7 +11093,7 @@ function deserialize(serializedJavascript) {
   return eval('(' + serializedJavascript + ')');
 }
 
-function renderPage(genStore, mountPoint) {
+function browserRenderer(genStore, mountPoint) {
 
   var localContext = (0, _getLocalContext2.default)({
     stageContext: window.__locals__.stageContext,
@@ -11672,7 +11672,7 @@ var Style = _parallax.PxSection.extend(_templateObject, function (p) {
 
 var Block = _styledComponents2.default.img.withConfig({
   displayName: 'panel__Block'
-})(['width:', ';position:relative;left:', ';top:', ';'], function (p) {
+})(['width:', 'vw;position:relative;left:', 'vw;top:', 'vw;'], function (p) {
   return p.width;
 }, function (p) {
   return p.left;
