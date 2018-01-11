@@ -12,7 +12,7 @@ import genStore from '../shared/gen-store'
 
 import config from '../../config.json'
 
-const PORT = config.global.port;
+const PORT = process.env.PORT || config.global.port;
 const APP_ID = config.global.app_id;
 const app = express()
 

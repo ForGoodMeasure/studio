@@ -20,11 +20,8 @@ const Style = styled.div`
     height: 100vh;
     overflow-x: hidden;
     overflow-y: scroll;
-    cursor: none;
   }
   .cursor {
-    transition:
-      top 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 6em;
     width: 6em;
     position: fixed;
@@ -180,6 +177,7 @@ class Panels extends React.Component {
         onScroll={ this.onScroll }
         onClick={ this.onClick }
       >
+        { this.getCursor() }
         <Background
           bgColor={ this.getBgColor() }
           textColor={ this.getTextColor() }

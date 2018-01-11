@@ -11609,7 +11609,7 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           _panels2.default,
           null,
-          _react2.default.createElement(_panel2.default, { empty: true, cursor: 'hi-cursor.svg', topCursor: 'hi-cursor.svg', bottomCursor: 'see-work-cursor.svg' }),
+          _react2.default.createElement(_panel2.default, { empty: true, cursor: 'see-work-cursor.svg', topCursor: 'hi-cursor.svg', bottomCursor: 'see-work-cursor.svg' }),
           _react2.default.createElement(_panel2.default, { projectId: 'rad', topCursor: 'back-cursor.svg', cursor: 'rad-cursor.svg', cursorSize: '12em' }),
           _react2.default.createElement(_panel2.default, { projectId: 'hab', cursor: 'hab-cursor.svg', cursorSize: '10em' }),
           _react2.default.createElement(_panel2.default, { projectId: 'sherpa', cursor: 'sherpa-cursor.svg', cursorSize: '10em' }),
@@ -11779,7 +11779,7 @@ var SHERP_GRAY = '#333334';
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:scroll;cursor:none;}.cursor{transition:top 400ms cubic-bezier(0.175,0.885,0.32,1.275);height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}']);
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:scroll;}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}']);
 
 var Panels = function (_React$Component) {
   _inherits(Panels, _React$Component);
@@ -11914,6 +11914,7 @@ var Panels = function (_React$Component) {
           onScroll: this.onScroll,
           onClick: this.onClick
         },
+        this.getCursor(),
         _react2.default.createElement(_background2.default, {
           bgColor: this.getBgColor(),
           textColor: this.getTextColor()

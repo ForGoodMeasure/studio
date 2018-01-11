@@ -30,6 +30,7 @@ export default localContext => injectGlobal`
   body {
     font-size: 18px;
     font-family: 'Styrene', sans-serif;
+    cursor: none;
   }
   body * {
     margin: 0;

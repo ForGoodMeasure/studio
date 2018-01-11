@@ -21,7 +21,7 @@ class App extends React.Component {
     return (
       <Style>
         <Panels>
-          <Panel empty cursor="hi-cursor.svg" topCursor="hi-cursor.svg" bottomCursor="see-work-cursor.svg"/>
+          <Panel empty cursor="see-work-cursor.svg" topCursor="hi-cursor.svg" bottomCursor="see-work-cursor.svg"/>
           <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
           <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
           <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
