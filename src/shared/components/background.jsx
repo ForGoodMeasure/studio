@@ -13,9 +13,9 @@ const Style = styled.div`
   justify-content: center;
   font-size: 1.6em;
   background: ${ p => p.bgColor };
-  color: ${ p => p.textColor };
   -webkit-text-stroke-color: ${ p => p.textColor };
-  transition: background 1s, color 1s, -webkit-text-stroke-color 1s;
+  transition: background 1s, co
+  color: ${ p => p.textColor };lor 1s, -webkit-text-stroke-color 1s;
   .cursor {
     height: 6em;
     width: 6em;
@@ -31,6 +31,39 @@ const Style = styled.div`
   h1 {
     margin-bottom: 0.5em;
   }
+
+.type {
+  width: 100%;
+  text-align: center;
+}
+
+    #hello {
+      font-size: 42vw;
+      font-weight: bold;
+      letter-spacing: -1.5vw;
+      margin-bottom: -6%;
+      margin-top: -3%;
+    }
+
+    #statement {
+      width: 85%;
+      font-size: 5vw;
+      margin: 0 auto;
+      line-height: 5vw;
+      margin-bottom: 3%;
+    }
+
+    #contact {
+      margin: 0 auto;
+      font-size: 1.5vw;
+      line-height: 2.1vw;
+      letter-spacing: .1vw;
+      margin-top: -1%;
+    }
+
+    ul{
+      list-style: none;
+    }
 `
 
 class Background extends React.Component {
@@ -43,15 +76,27 @@ class Background extends React.Component {
         textColor={ this.props.textColor }
         bgColor={ this.props.bgColor}
       >
-        <h1>FOR GOOD MEASURE</h1>
-        <p>
-          is a creative studio in Brooklyn, New York building brands and fresh websites.
-          <br/>
-          <br/>
-          Contact:
-          <br/>
-          hello@forgoodmeasure.us
-        </p>
+
+
+      <div className="type">
+        <div id="hello">
+          Hello
+        </div>
+        <div id="statement">
+          For Good Measure is a creative studio building brands 
+          &amp; websites for clients and nice people.
+        </div>
+        <div id="contact">
+          <ul>
+            <li><u>New Business</u></li>
+            <li>hello[at]forgoodmeasure.us</li>
+            <li>917.882.0686</li>
+          </ul>
+        </div>
+      </div>
+
+
+
       </Style>
     );
   }

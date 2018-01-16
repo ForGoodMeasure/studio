@@ -46,7 +46,6 @@
     "react-svg": "^2.1.19",
     "react-tilt": "^0.1.4",
     "redux": "^3.7.2",
-    "redux-ghost": "git+ssh://git@github.com:ForGoodMeasure/redux-ghost.git",
     "redux-thunk": "^2.2.0",
     "scroll": "^2.0.0",
     "scroll-doc": "^0.1.3",
