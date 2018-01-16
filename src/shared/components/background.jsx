@@ -14,56 +14,110 @@ const Style = styled.div`
   font-size: 1.6em;
   background: ${ p => p.bgColor };
   -webkit-text-stroke-color: ${ p => p.textColor };
-  transition: background 1s, co
-  color: ${ p => p.textColor };lor 1s, -webkit-text-stroke-color 1s;
-  .cursor {
-    height: 6em;
-    width: 6em;
-    position: fixed;
-    z-index: 10;
-    background: url('${ p => p.cursorUrl }');
-    background-size: cover;
-  }
-  p {
-    box-sizing: border-box;
-    padding: 0 8em;
-  }
-  h1 {
-    margin-bottom: 0.5em;
-  }
+  transition: background 1s, color 1s, -webkit-text-stroke-color 1s;
 
-.type {
-  width: 100%;
-  text-align: center;
-}
+    .type {
+      width: 100%;
+      text-align: center;
+    }
 
     #hello {
-      font-size: 42vw;
-      font-weight: bold;
-      letter-spacing: -1.5vw;
-      margin-bottom: -6%;
-      margin-top: -3%;
+      font-size: 300pt;
+      font-weight: 500;
+      letter-spacing: -20pt;
+      margin-bottom: -.15em;
+      margin-top: -.35em;
     }
 
     #statement {
       width: 85%;
-      font-size: 5vw;
+      font-size: 40pt;
+      font-weight: 500;
       margin: 0 auto;
-      line-height: 5vw;
-      margin-bottom: 3%;
+      line-height: 40pt;
+      margin-bottom: 20px;
+      letter-spacing: -.1vw;
     }
 
     #contact {
       margin: 0 auto;
-      font-size: 1.5vw;
-      line-height: 2.1vw;
-      letter-spacing: .1vw;
-      margin-top: -1%;
+      font-size: 16pt;
+      font-weight: 500;
+      line-height: 21pt;
+      letter-spacing: 0vw;
+      margin-top: 1.5em;
     }
 
     ul{
       list-style: none;
     }
+
+    @media (max-width: 1000px) {
+
+      #hello {
+        font-size: 200pt;
+        font-weight: 500;
+        margin-bottom: -.1em;
+        margin-top: -.4em;
+        letter-spacing: -15pt;
+      }
+
+      flex-direction: column;
+
+        #statement {
+          font-size: 30pt;
+          line-height: 30pt;
+        }
+
+      #contact {
+        margin-top: 1em;
+      }
+
+      }
+
+    @media (max-width: 600px) {
+
+      #hello {
+        font-size: 40vw;
+        margin-bottom: -50px;
+        margin-top: -.5em;
+        letter-spacing: -3vw;
+      }
+
+        flex-direction: column;
+
+        #statement {
+          font-size: 24pt;
+          line-height: 24pt;
+          margin-top: 50px;
+        }
+
+        #contact {
+          font-size: 12pt;
+          line-height: 18pt;
+          letter-spacing: 0vw;
+          margin-top: 2em;
+        }
+      }
+
+    @media (min-width: 1400px) {
+       
+       #hello {
+        font-size: 360pt;
+        margin-bottom: -50px;
+        margin-top: -.3em;
+        letter-spacing: -30pt;
+      }
+
+      flex-direction: column;
+
+        #statement {
+          font-size: 50pt;
+          line-height: 50pt;
+          width: 80%;
+        }
+      }
+
 `
 
 class Background extends React.Component {
@@ -94,8 +148,6 @@ class Background extends React.Component {
           </ul>
         </div>
       </div>
-
-
 
       </Style>
     );
