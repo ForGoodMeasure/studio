@@ -26,6 +26,30 @@ class App extends React.Component {
           <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
           <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
           <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
           <Panel empty cursor="hi-cursor.svg" bottomCursor="hi-cursor.svg" />
         </Panels>
       </Style>

@@ -27,6 +27,7 @@ const Style = styled.div`
     position: fixed;
     z-index: 10;
     pointer-events:none;
+    transition: 500ms transform;
   }
   .nav {
     position: fixed;
@@ -45,9 +46,22 @@ class Panels extends React.Component {
     this.state = {
       index: 0,
       cursorX: null,
-      cursorY: null
+      cursorY: null,
+      scrollRate: 0
     };
     this.childList = React.Children.toArray(props.children);
+  }
+
+  componentDidMount() {
+    this.$panels = document.getElementById('panels');
+    this.autoScrollInterval = window.setInterval(() => {
+      const height = this.state.scrollRate + this.$panels.scrollTop;
+      scroll.top(this.$panels, height, { duration: 15 });
+    }, 10);
+  }
+
+  componentWillUnmount() {
+    this.autoScrollInterval && window.clearInterval(this.autoScrollInterval);
   }
 
   modifyIndex(value, operator) {
@@ -75,15 +89,15 @@ class Panels extends React.Component {
   }
 
   scroll = () => {
-    const docHeight = document.getElementById('panels').scrollHeight;
+    const docHeight = this.$panels.scrollHeight;
     const panelHeight = docHeight / (this.maxIndex + 1);
     const height = this.state.index * panelHeight;
-    scroll.top(document.getElementById('panels'), height, { duration: 500 });
+    scroll.top(this.$panels, height, { duration: 500 });
   }
 
   onScroll = () => {
-    const scrollTop = document.getElementById('panels').scrollTop + 600;
-    const docHeight = document.getElementById('panels').scrollHeight;
+    const scrollTop = this.$panels.scrollTop + 600;
+    const docHeight = this.$panels.scrollHeight;
     const currentIndex = Math.floor(scrollTop / docHeight * (this.maxIndex + 1));
     this.setState({
       index: currentIndex
@@ -103,15 +117,13 @@ class Panels extends React.Component {
   }
 
   onMouseMove = e => {
-    const scrollTop = document.getElementById('panels').scrollTop;
-    let isScrolling = false;
-    if (Math.abs(this.state.cursorY - e.clientY) > 600) {
-      isScrolling = true;
-    }
+    const windowHeight = window.innerHeight;
+    // const scrollRate = Math.pow( ( e.pageY - windowHeight / 2 ) / 38, 3 ) / 100;
+    const scrollRate = Math.atan( ( 2 * e.pageY / windowHeight -1 ) * Math.PI ) * 30;
     this.setState({
       cursorX: e.pageX,
       cursorY: e.pageY,
-      isScrolling
+      scrollRate
     });
   }
 
@@ -141,31 +153,18 @@ class Panels extends React.Component {
     if (typeof window === 'undefined' || !this.state.cursorX ) {
       return;
     }
-
-    let path = '';
-    let cursorSize = '8em';
-    const mousePosition = this.state.cursorY / window.innerHeight;
-    const selectedChild = this.childList[ this.state.index ];
-
-    if (mousePosition < 0.1) {
-      path = dotty.get(selectedChild, 'props.topCursor') || "prev-proj-cursor.svg";
-    } else if ( mousePosition < 0.8 ) {
-      path = dotty.get(selectedChild, 'props.cursor');
-    } else {
-      path = dotty.get(selectedChild, 'props.bottomCursor') || "next-proj-cursor.svg";
-    }
-
     return (
       <div
         className="cursor"
         style={{
           top: this.state.cursorY,
           left: this.state.cursorX,
-          width: cursorSize,
-          height: cursorSize
+          transform: this.state.scrollRate > 0 ? '' : 'rotate(180deg)',
+          width: '5em',
+          height: '5em'
         }}
       >
-        <SVG path={ path } />
+        <SVG path="back-forward-cursor.svg" />
       </div>
     );
   }
@@ -175,7 +174,6 @@ class Panels extends React.Component {
       <Style
         onMouseMove={ this.onMouseMove }
         onScroll={ this.onScroll }
-        onClick={ this.onClick }
       >
         { this.getCursor() }
         <Background
