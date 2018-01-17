@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Tilt from 'react-tilt';
+// import Tilt from 'react-tilt';
 
 import { localContextType } from '../util';
 import { PxSection, PxLayer } from '../style/parallax';
 
+const Tilt = styled.div`
+  height: 100%;
+  width: 100%;
+`;
 const Style = PxSection.extend`
   height: 100vh;
   width: 100vw;
@@ -30,10 +34,9 @@ const Panel = (props, { localContext }) => {
   }
   const images = localContext.getContent('panels', props.projectId);
   return (
-    <Style { ...props } className="panel" id={ props.starting ? `starting-${ props.projectId }` : '' }>
+    <Style { ...props } className="panel" id={ props.isStartingPanel ? `starting-${ props.projectId }` : '' }>
       <Tilt
         className="tilt-element"
-        options={{ max : 5, scale: 1, perspective: 100000, axis: 'Y' }}
         style={{ height: '100%', width: '100%' }}
       >
         {

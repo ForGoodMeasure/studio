@@ -17,40 +17,76 @@ const Style = styled.div`
 `;
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.cursorX = null;
+    this.cursorY = null;
+    this.state = {
+      cursorX: this.cursorX,
+      cursorY: this.cursorY
+    };
+  }
+
+  componentDidMount() {
+    this.loop();
+  }
+
+  loop() {
+    this.setState({
+      cursorX: this.cursorX,
+      cursorY: this.cursorY
+    })
+    window.requestAnimationFrame(this.loop.bind(this));
+  }
+
+  onMouseMove = e => {
+    this.cursorX = e.pageX;
+    this.cursorY = e.pageY;
+  }
+
+  renderPanel(props) {
+    return (
+      <Panel { ...props } />
+    );
+  }
+
   render() {
     return (
-      <Style>
-        <Panels>
-          <Panel empty cursor="see-work-cursor.svg" topCursor="hi-cursor.svg" bottomCursor="see-work-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel starting projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel starting projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel starting projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel starting projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel empty cursor="hi-cursor.svg" bottomCursor="hi-cursor.svg" />
+      <Style
+        onMouseMove={ this.onMouseMove }
+      >
+        <Panels cursorX={ this.state.cursorX } cursorY={ this.state.cursorY }>
+          <Panel empty {...this.state} />
+          <Panel projectId="rad" {...this.state} />
+          <Panel projectId="hab" {...this.state} />
+          <Panel projectId="sherpa" {...this.state} />
+          <Panel projectId="sex" {...this.state} />
+          <Panel projectId="rad" {...this.state} />
+          <Panel projectId="hab" {...this.state} />
+          <Panel projectId="sherpa" {...this.state} />
+          <Panel projectId="sex" {...this.state} />
+          <Panel projectId="rad" {...this.state} />
+          <Panel projectId="hab" {...this.state} />
+          <Panel projectId="sherpa" {...this.state} />
+          <Panel projectId="sex" {...this.state} />
+          <Panel isStartingPanel projectId="rad" {...this.state} />
+          <Panel isStartingPanel projectId="hab" {...this.state} />
+          <Panel isStartingPanel projectId="sherpa" {...this.state} />
+          <Panel isStartingPanel projectId="sex" {...this.state} />
+          <Panel projectId="rad" {...this.state} />
+          <Panel projectId="hab" {...this.state} />
+          <Panel projectId="sherpa" {...this.state} />
+          <Panel projectId="sex" {...this.state} />
+          <Panel projectId="rad" {...this.state} />
+          <Panel projectId="hab" {...this.state} />
+          <Panel projectId="sherpa" {...this.state} />
+          <Panel projectId="sex" {...this.state} />
+          <Panel projectId="rad" {...this.state} />
+          <Panel projectId="hab" {...this.state} />
+          <Panel projectId="sherpa" {...this.state} />
+          <Panel projectId="sex" {...this.state} />
+          <Panel empty {...this.state} />
         </Panels>
       </Style>
     );
