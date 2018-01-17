@@ -43,12 +43,6 @@ const Style = styled.div`
     margin-top: 1.5em;
     > div, svg {
       height: 100%;
-      fill: ${ p => p.textColor };
-      transition: 1s fill;
-      g {
-        fill: ${ p => p.textColor };
-        transition: 1s fill;
-      }
     }
   }
   @media (max-width: 1000px) {
@@ -115,21 +109,18 @@ class Background extends React.Component {
         textColor={ this.props.textColor }
         bgColor={ this.props.bgColor}
       >
-
-
-      <div className="type">
-        <div id="hello">
-          Hello
+        <div className="type">
+          <div id="hello">
+            Hello
+          </div>
+          <div id="statement">
+            For Good Measure is a creative studio building brands
+            &amp; websites for clients and nice people.
+          </div>
+          <div id="contact">
+            <SVG path="maxcont.svg" fill={ this.props.textColor }/>
+          </div>
         </div>
-        <div id="statement">
-          For Good Measure is a creative studio building brands
-          &amp; websites for clients and nice people.
-        </div>
-        <div id="contact">
-          <SVG path="maxcont.svg" />
-        </div>
-      </div>
-
       </Style>
     );
   }

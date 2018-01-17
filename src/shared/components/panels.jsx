@@ -19,7 +19,9 @@ const Style = styled.div`
     overflow-x: hidden;
     overflow-y: hidden;
     .tilt-element {
-      transform: translateX(${ p => p.transformX * -10 }vw);
+      transform:
+        translateX(${ p => p.transformX * -10 }vw)
+        rotate3d(0, 1, 0, ${ p => p.transformX * 10 }deg);
     }
   }
   .cursor {
@@ -43,7 +45,7 @@ class Panels extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: 0,
+      projectId: '',
       scrollTop: 0,
       transformX: 0
     };
@@ -60,21 +62,27 @@ class Panels extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const scrollTop = this.state.scrollTop
-      ? this.state.scrollTop + this.getScrollRate()
-      : this.startingScrollTop;
+    const scrollTop = this.getScrollTop();
     const transformX = this.getTransformX();
-    this.setState({ scrollTop, transformX });
+    const projectId = this.getProjectId();
+
+    this.setState({
+      scrollTop,
+      transformX,
+      projectId
+    });
   }
 
   componentDidUpdate() {
     this.$panels.scrollTop = this.state.scrollTop;
   }
 
-  getScrollRate() {
+  getScrollTop() {
     const windowHeight = window.innerHeight;
     const baseRate = arctan(this.props.cursorY, windowHeight);
-    return 35 * baseRate;
+    const scrollRate =  35 * baseRate;
+    const scrollTop = this.state.scrollTop ? this.state.scrollTop + scrollRate : this.startingScrollTop;
+    return scrollTop;
   }
 
   getTransformX() {
@@ -83,12 +91,29 @@ class Panels extends React.Component {
     return baseTrans;
   }
 
+  getProjectId() {
+    const scrollTop = this.$panels.scrollTop;
+    const docHeight = this.$panels.scrollHeight;
+    const currentIndex = Math.floor(scrollTop / docHeight * (this.childList.length) + 0.5);
+    return dotty.get(this.childList, `${ currentIndex }.props.projectId`);
+  }
+
   getBgColor = () => {
-    return 'white';
+    return ({
+      rad: '#7F8893',
+      sex: '#F9C9B6',
+      hab: '#B7B2AC',
+      sherpa: '#350700'
+    })[this.state.projectId] || '#FFFFFF';
   }
 
   getTextColor = () => {
-    return 'red';
+    return ({
+      rad: '#313435',
+      sex: '#000000',
+      hab: '#F5F3F4',
+      sherpa: '#C0BBB9'
+    })[this.state.projectId] || '#000000';
   }
 
   render() {

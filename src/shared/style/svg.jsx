@@ -11,7 +11,8 @@ const SVG = (props, { localContext }) => {
   }
   const Style = styled.div`
     svg g {
-      stroke: ${ props.stroke };
+      fill: ${ props.fill };
+      transition: 1s fill;
     }
     svg rect {
       fill: ${ props.fill };
