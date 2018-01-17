@@ -10,10 +10,7 @@ import { Px } from '../style/parallax';
 import SVG from '../style/svg';
 import Hideable from '../style/hideable';
 
-const FGM_GRAY = "#383838";
-const RAD_BLUE = "#38404b";
-const HAB_GREEN = "#043e2f";
-const SHERP_GRAY = '#333334';
+const arctan = (x, scale) => Math.atan( (2 * x) / scale - 1 ) * 4 / Math.PI;
 
 const Style = styled.div`
   #panels {
@@ -21,6 +18,9 @@ const Style = styled.div`
     height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
+    .tilt-element {
+      transform: translateX(${ p => p.transformX * -10 }vw);
+    }
   }
   .cursor {
     height: 6em;
@@ -28,7 +28,6 @@ const Style = styled.div`
     position: fixed;
     z-index: 10;
     pointer-events:none;
-    transition: 500ms transform;
   }
   .nav {
     position: fixed;
@@ -45,7 +44,8 @@ class Panels extends React.Component {
     super(props);
     this.state = {
       index: 0,
-      scrollTop: 0
+      scrollTop: 0,
+      transformX: 0
     };
     this.childList = React.Children.toArray(props.children);
   }
@@ -63,7 +63,8 @@ class Panels extends React.Component {
     const scrollTop = this.state.scrollTop
       ? this.state.scrollTop + this.getScrollRate()
       : this.startingScrollTop;
-    this.setState({ scrollTop });
+    const transformX = this.getTransformX();
+    this.setState({ scrollTop, transformX });
   }
 
   componentDidUpdate() {
@@ -72,8 +73,14 @@ class Panels extends React.Component {
 
   getScrollRate() {
     const windowHeight = window.innerHeight;
-    const baseRate = Math.atan( (2 * this.props.cursorY) / windowHeight - 1 ) * 4 / Math.PI;
+    const baseRate = arctan(this.props.cursorY, windowHeight);
     return 35 * baseRate;
+  }
+
+  getTransformX() {
+    const windowWidth = window.innerWidth;
+    const baseTrans = arctan(this.props.cursorX, windowWidth);
+    return baseTrans;
   }
 
   getBgColor = () => {
@@ -86,7 +93,7 @@ class Panels extends React.Component {
 
   render() {
     return (
-      <Style>
+      <Style transformX={ this.state.transformX }>
         <Hideable hideInitially visible>
           <div
             className="cursor"

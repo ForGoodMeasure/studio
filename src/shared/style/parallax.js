@@ -22,7 +22,6 @@ export const PxTitle = styled.div`
 `;
 
 export const PxSection = styled.div`
-  __comment: px-section;
   position: relative;
   height: ${ props => props.height };
   z-index: ${ props => props.zIndex };

@@ -4320,7 +4320,7 @@ var PxTitle = exports.PxTitle = _styledComponents2.default.div.withConfig({
 
 var PxSection = exports.PxSection = _styledComponents2.default.div.withConfig({
   displayName: 'parallax__PxSection'
-})(['__comment:px-section;position:relative;height:', ';z-index:', ';transform-style:preserve-3d;'], function (props) {
+})(['position:relative;height:', ';z-index:', ';transform-style:preserve-3d;'], function (props) {
   return props.height;
 }, function (props) {
   return props.zIndex;
@@ -11451,36 +11451,39 @@ var App = function (_React$Component) {
         },
         _react2.default.createElement(
           _panels2.default,
-          { cursorX: this.state.cursorX, cursorY: this.state.cursorY },
-          _react2.default.createElement(_panel2.default, _extends({ empty: true }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sex' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sex' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sex' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ isStartingPanel: true, projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ isStartingPanel: true, projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ isStartingPanel: true, projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ isStartingPanel: true, projectId: 'sex' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sex' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sex' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'rad' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'hab' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sherpa' }, this.state)),
-          _react2.default.createElement(_panel2.default, _extends({ projectId: 'sex' }, this.state)),
+          {
+            cursorX: this.state.cursorX,
+            cursorY: this.state.cursorY
+          },
+          _react2.default.createElement(_panel2.default, { empty: true }),
+          _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sex' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sex' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sex' }),
+          _react2.default.createElement(_panel2.default, { isStartingPanel: true, projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { isStartingPanel: true, projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { isStartingPanel: true, projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { isStartingPanel: true, projectId: 'sex' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sex' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sex' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'hab' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sherpa' }),
+          _react2.default.createElement(_panel2.default, { projectId: 'sex' }),
           _react2.default.createElement(_panel2.default, _extends({ empty: true }, this.state))
         )
       );
@@ -11642,14 +11645,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var FGM_GRAY = "#383838";
-var RAD_BLUE = "#38404b";
-var HAB_GREEN = "#043e2f";
-var SHERP_GRAY = '#333334';
+var arctan = function arctan(x, scale) {
+  return Math.atan(2 * x / scale - 1) * 4 / Math.PI;
+};
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;transition:500ms transform;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}']);
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;.tilt-element{transform:translateX(', 'vw);}}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}'], function (p) {
+  return p.transformX * -10;
+});
 
 var Panels = function (_React$Component) {
   _inherits(Panels, _React$Component);
@@ -11669,7 +11673,8 @@ var Panels = function (_React$Component) {
 
     _this.state = {
       index: 0,
-      scrollTop: 0
+      scrollTop: 0,
+      transformX: 0
     };
     _this.childList = _react2.default.Children.toArray(props.children);
     return _this;
@@ -11691,7 +11696,8 @@ var Panels = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       var scrollTop = this.state.scrollTop ? this.state.scrollTop + this.getScrollRate() : this.startingScrollTop;
-      this.setState({ scrollTop: scrollTop });
+      var transformX = this.getTransformX();
+      this.setState({ scrollTop: scrollTop, transformX: transformX });
     }
   }, {
     key: 'componentDidUpdate',
@@ -11702,15 +11708,22 @@ var Panels = function (_React$Component) {
     key: 'getScrollRate',
     value: function getScrollRate() {
       var windowHeight = window.innerHeight;
-      var baseRate = Math.atan(2 * this.props.cursorY / windowHeight - 1) * 4 / Math.PI;
+      var baseRate = arctan(this.props.cursorY, windowHeight);
       return 35 * baseRate;
+    }
+  }, {
+    key: 'getTransformX',
+    value: function getTransformX() {
+      var windowWidth = window.innerWidth;
+      var baseTrans = arctan(this.props.cursorX, windowWidth);
+      return baseTrans;
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         Style,
-        null,
+        { transformX: this.state.transformX },
         _react2.default.createElement(
           _hideable2.default,
           { hideInitially: true, visible: true },

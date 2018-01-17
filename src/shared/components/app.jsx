@@ -56,36 +56,39 @@ class App extends React.Component {
       <Style
         onMouseMove={ this.onMouseMove }
       >
-        <Panels cursorX={ this.state.cursorX } cursorY={ this.state.cursorY }>
-          <Panel empty {...this.state} />
-          <Panel projectId="rad" {...this.state} />
-          <Panel projectId="hab" {...this.state} />
-          <Panel projectId="sherpa" {...this.state} />
-          <Panel projectId="sex" {...this.state} />
-          <Panel projectId="rad" {...this.state} />
-          <Panel projectId="hab" {...this.state} />
-          <Panel projectId="sherpa" {...this.state} />
-          <Panel projectId="sex" {...this.state} />
-          <Panel projectId="rad" {...this.state} />
-          <Panel projectId="hab" {...this.state} />
-          <Panel projectId="sherpa" {...this.state} />
-          <Panel projectId="sex" {...this.state} />
-          <Panel isStartingPanel projectId="rad" {...this.state} />
-          <Panel isStartingPanel projectId="hab" {...this.state} />
-          <Panel isStartingPanel projectId="sherpa" {...this.state} />
-          <Panel isStartingPanel projectId="sex" {...this.state} />
-          <Panel projectId="rad" {...this.state} />
-          <Panel projectId="hab" {...this.state} />
-          <Panel projectId="sherpa" {...this.state} />
-          <Panel projectId="sex" {...this.state} />
-          <Panel projectId="rad" {...this.state} />
-          <Panel projectId="hab" {...this.state} />
-          <Panel projectId="sherpa" {...this.state} />
-          <Panel projectId="sex" {...this.state} />
-          <Panel projectId="rad" {...this.state} />
-          <Panel projectId="hab" {...this.state} />
-          <Panel projectId="sherpa" {...this.state} />
-          <Panel projectId="sex" {...this.state} />
+        <Panels
+          cursorX={ this.state.cursorX }
+          cursorY={ this.state.cursorY }
+        >
+          <Panel empty />
+          <Panel projectId="rad" />
+          <Panel projectId="hab" />
+          <Panel projectId="sherpa" />
+          <Panel projectId="sex" />
+          <Panel projectId="rad" />
+          <Panel projectId="hab" />
+          <Panel projectId="sherpa" />
+          <Panel projectId="sex" />
+          <Panel projectId="rad" />
+          <Panel projectId="hab" />
+          <Panel projectId="sherpa" />
+          <Panel projectId="sex" />
+          <Panel isStartingPanel projectId="rad" />
+          <Panel isStartingPanel projectId="hab" />
+          <Panel isStartingPanel projectId="sherpa" />
+          <Panel isStartingPanel projectId="sex" />
+          <Panel projectId="rad" />
+          <Panel projectId="hab" />
+          <Panel projectId="sherpa" />
+          <Panel projectId="sex" />
+          <Panel projectId="rad" />
+          <Panel projectId="hab" />
+          <Panel projectId="sherpa" />
+          <Panel projectId="sex" />
+          <Panel projectId="rad" />
+          <Panel projectId="hab" />
+          <Panel projectId="sherpa" />
+          <Panel projectId="sex" />
           <Panel empty {...this.state} />
         </Panels>
       </Style>
