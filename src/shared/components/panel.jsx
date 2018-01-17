@@ -15,18 +15,40 @@ const Style = PxSection.extend`
   width: 100vw;
   background: ${ p => p.color };
   display: block;
-  margin-bottom: 30vh;
+  margin-bottom: 10vh;
   .tilt-element {
     transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
   }
 `;
 
-const Block = styled.img`
-  width: ${ p => p.width }vw;
-  position: relative;
-  left: ${ p => p.left }vw;
-  top: ${ p => p.top }vw;
+const BlockStyle = styled.div`
+  img {
+    width: ${ p => p.width }vw;
+    position: relative;
+    left: ${ p => p.left }vw;
+    top: ${ p => p.top }vw;
+    box-shadow: ${ p => {
+      if (p.noShadow) return;
+      const d = p.depth * 10 + 30;
+      return `${ d }px ${ d }px ${ d/2 + 20 }px #0000002e`
+    }};
+  }
 `;
+
+const Block = props => (
+  <BlockStyle {...props}>
+    <PxLayer depth={ props.depth }>
+      <img
+        src={ props.src }
+        width={ props.width }
+        left={ props.left }
+        top={ props.top }
+      />
+    </PxLayer>
+  </BlockStyle>
+);
 
 const Panel = (props, { localContext }) => {
   if (props.empty) {
@@ -37,18 +59,18 @@ const Panel = (props, { localContext }) => {
     <Style { ...props } className="panel" id={ props.isStartingPanel ? `starting-${ props.projectId }` : '' }>
       <Tilt
         className="tilt-element"
-        style={{ height: '100%', width: '100%' }}
       >
         {
           images.map( (img, i) => (
-            <PxLayer depth={ 6 * Math.floor( i - images.length / 2) } key={ i } >
-              <Block
-                src={ localContext.assetUrl(`images${ img.url }`) }
-                width={ img.width }
-                left={ img.left }
-                top={ img.top }
-              />
-            </PxLayer>
+            <Block
+              src={ localContext.assetUrl(`images${ img.url }`) }
+              width={ img.width }
+              left={ img.left }
+              top={ img.top }
+              noShadow={ img.noShadow }
+              depth={ 2 * i }
+              key={ i }
+            />
           ))
         }
       </Tilt>

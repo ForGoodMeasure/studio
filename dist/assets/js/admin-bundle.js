@@ -6871,6 +6871,10 @@ var contentSchema = {
               top: {
                 type: 'integer',
                 title: 'Top'
+              },
+              noShadow: {
+                type: 'boolean',
+                title: 'No Shadow'
               }
             }
           }
@@ -6895,6 +6899,10 @@ var contentSchema = {
               top: {
                 type: 'integer',
                 title: 'Top'
+              },
+              noShadow: {
+                type: 'boolean',
+                title: 'No Shadow'
               }
             }
           }
@@ -6919,6 +6927,10 @@ var contentSchema = {
               top: {
                 type: 'integer',
                 title: 'Top'
+              },
+              noShadow: {
+                type: 'boolean',
+                title: 'No Shadow'
               }
             }
           }
@@ -6943,6 +6955,10 @@ var contentSchema = {
               top: {
                 type: 'integer',
                 title: 'Top'
+              },
+              noShadow: {
+                type: 'boolean',
+                title: 'No Shadow'
               }
             }
           }
