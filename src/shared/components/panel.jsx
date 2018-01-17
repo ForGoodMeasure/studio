@@ -11,7 +11,7 @@ const Style = PxSection.extend`
   width: 100vw;
   background: ${ p => p.color };
   display: block;
-  margin-bottom: 30%;
+  margin-bottom: 30vh;
   .tilt-element {
     transform-style: preserve-3d;
   }
@@ -30,7 +30,7 @@ const Panel = (props, { localContext }) => {
   }
   const images = localContext.getContent('panels', props.projectId);
   return (
-    <Style { ...props } className="panel">
+    <Style { ...props } className="panel" id={ props.starting ? `starting-${ props.projectId }` : '' }>
       <Tilt
         className="tilt-element"
         options={{ max : 5, scale: 1, perspective: 100000, axis: 'Y' }}

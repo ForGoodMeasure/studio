@@ -8,6 +8,7 @@ import dotty from 'dotty';
 import Background from './background';
 import { Px } from '../style/parallax';
 import SVG from '../style/svg';
+import Hideable from '../style/hideable';
 
 const FGM_GRAY = "#383838";
 const RAD_BLUE = "#38404b";
@@ -54,45 +55,20 @@ class Panels extends React.Component {
 
   componentDidMount() {
     this.$panels = document.getElementById('panels');
+
+    const startingPanels = this.childList.filter( child => child.props.starting );
+    const randomPanel = startingPanels[ Math.floor( Math.random() * startingPanels.length )];
+    const randomId = `starting-${ randomPanel.props.projectId }`;
+    this.$panels.scrollTop = document.getElementById(randomId).offsetTop;
+
     this.autoScrollInterval = window.setInterval(() => {
-      const height = this.state.scrollRate + this.$panels.scrollTop;
-      scroll.top(this.$panels, height, { duration: 15 });
+      const height = 45 * this.state.scrollRate + this.$panels.scrollTop;
+      scroll.top(this.$panels, height, { duration: 50 });
     }, 10);
   }
 
   componentWillUnmount() {
     this.autoScrollInterval && window.clearInterval(this.autoScrollInterval);
-  }
-
-  modifyIndex(value, operator) {
-    let newValue = value + operator;
-    if (operator > 0 && newValue > this.maxIndex) {
-      newValue = this.maxIndex;
-    } else if (operator < 0 && newValue < 0) {
-      newValue = 0;
-    }
-    return newValue;
-  }
-
-  modifyState = (operator, cb) => {
-    this.setState({
-      index: this.modifyIndex(this.state.index, operator)
-    }, cb);
-  }
-
-  decrement = () => {
-    this.modifyState(1, this.scroll);
-  }
-
-  increment = () => {
-    this.modifyState(-1, this.scroll);
-  }
-
-  scroll = () => {
-    const docHeight = this.$panels.scrollHeight;
-    const panelHeight = docHeight / (this.maxIndex + 1);
-    const height = this.state.index * panelHeight;
-    scroll.top(this.$panels, height, { duration: 500 });
   }
 
   onScroll = () => {
@@ -118,8 +94,7 @@ class Panels extends React.Component {
 
   onMouseMove = e => {
     const windowHeight = window.innerHeight;
-    // const scrollRate = Math.pow( ( e.pageY - windowHeight / 2 ) / 38, 3 ) / 100;
-    const scrollRate = Math.atan( ( 2 * e.pageY / windowHeight -1 ) * Math.PI ) * 30;
+    const scrollRate = Math.atan( (2 * e.pageY) / windowHeight - 1 ) * 4 / Math.PI;
     this.setState({
       cursorX: e.pageX,
       cursorY: e.pageY,
@@ -128,25 +103,11 @@ class Panels extends React.Component {
   }
 
   getBgColor = () => {
-    return ([
-      FGM_GRAY,
-      RAD_BLUE,
-      HAB_GREEN,
-      SHERP_GRAY,
-      'black',
-      'black'
-    ])[this.state.index]
+    return 'white';
   }
 
   getTextColor = () => {
-    return ([
-      'white',
-      'white',
-      'white',
-      'white',
-      'white',
-      FGM_GRAY
-    ])[this.state.index]
+    return 'red';
   }
 
   getCursor = () => {
@@ -159,7 +120,7 @@ class Panels extends React.Component {
         style={{
           top: this.state.cursorY,
           left: this.state.cursorX,
-          transform: this.state.scrollRate > 0 ? '' : 'rotate(180deg)',
+          transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
           width: '5em',
           height: '5em'
         }}
@@ -175,19 +136,21 @@ class Panels extends React.Component {
         onMouseMove={ this.onMouseMove }
         onScroll={ this.onScroll }
       >
-        { this.getCursor() }
-        <Background
-          bgColor={ this.getBgColor() }
-          textColor={ this.getTextColor() }
-        />
-        <Px
-          maxIndex={ this.maxIndex }
-          id="panels"
-        >
-          {
-            this.childList
-          }
-        </Px>
+        <Hideable hideInitially visible>
+          { this.getCursor() }
+          <Background
+            bgColor={ this.getBgColor() }
+            textColor={ this.getTextColor() }
+          />
+            <Px
+              maxIndex={ this.maxIndex }
+              id="panels"
+            >
+              {
+                this.childList
+              }
+            </Px>
+        </Hideable>
       </Style>
     );
   }

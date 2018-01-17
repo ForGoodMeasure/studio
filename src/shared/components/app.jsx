@@ -34,10 +34,10 @@ class App extends React.Component {
           <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
           <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
           <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
-          <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
-          <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
-          <Panel projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
+          <Panel starting projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
+          <Panel starting projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
+          <Panel starting projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
+          <Panel starting projectId="sex" cursor="sex-cursor.svg" cursorSize="12em" bottomCursor="sex-cursor.svg"/>
           <Panel projectId="rad" topCursor="back-cursor.svg" cursor="rad-cursor.svg" cursorSize="12em"/>
           <Panel projectId="hab" cursor="hab-cursor.svg" cursorSize="10em" />
           <Panel projectId="sherpa" cursor="sherpa-cursor.svg" cursorSize="10em" />
