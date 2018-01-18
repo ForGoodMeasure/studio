@@ -17,4 +17,4 @@ window.addEventListener('message', onMessage(message => {
   renderPage();
 }));
 
-// window.onload = renderPage;
+window.onload = renderPage;

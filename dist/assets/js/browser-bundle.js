@@ -4266,7 +4266,7 @@ var calculateScale = function calculateScale(depth) {
 
 var Px = exports.Px = _styledComponents2.default.div.withConfig({
   displayName: 'parallax__Px'
-})(['perspective:', 'px;height:100vh;'], perspective);
+})(['perspective:', 'px;height:100vw;'], perspective);
 
 var PxTitle = exports.PxTitle = _styledComponents2.default.div.withConfig({
   displayName: 'parallax__PxTitle'
@@ -4282,7 +4282,7 @@ var PxSection = exports.PxSection = _styledComponents2.default.div.withConfig({
 
 PxSection.defaultProps = {
   zIndex: 0,
-  height: '100vh'
+  height: '100vw'
 };
 
 var PxLayer = exports.PxLayer = _styledComponents2.default.div.withConfig({
@@ -6518,7 +6518,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'background__Style'
-})(['position:fixed;width:100vw;height:100vh;z-index:-10;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:1.6em;background:', ';color:', ';transition:1s background,1s color;.type{width:100%;text-align:center;}#hello{font-size:300pt;font-weight:500;letter-spacing:-20pt;margin-bottom:-.15em;margin-top:-.35em;}#statement{width:85%;font-size:40pt;font-weight:500;margin:0 auto;line-height:40pt;margin-bottom:20px;letter-spacing:-.1vw;}#contact{margin:0 auto;height:4em;margin-top:1.5em;> div,svg{height:100%;}}@media (max-width:1000px){#hello{font-size:200pt;font-weight:500;margin-bottom:-.1em;margin-top:-.4em;letter-spacing:-15pt;}#statement{font-size:30pt;line-height:30pt;}#contact{margin-top:1em;}}@media (max-width:600px){#hello{font-size:40vw;margin-bottom:-50px;margin-top:-.5em;letter-spacing:-3vw;}#statement{font-size:24pt;line-height:24pt;margin-top:50px;}#contact{font-size:12pt;line-height:18pt;letter-spacing:0vw;margin-top:2em;}}@media (min-width:1400px){#hello{font-size:360pt;margin-bottom:-50px;margin-top:-.3em;letter-spacing:-30pt;}#statement{font-size:50pt;line-height:50pt;width:80%;}#contact{height:3em;}}'], function (p) {
+})(['position:fixed;width:100vw;height:100vh;z-index:-10;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:1.6em;background:', ';color:', ';transition:background 1s,color 1s,filter 1s,transform 1s;.type{width:100%;text-align:center;}#hello{font-size:300pt;font-weight:500;letter-spacing:-20pt;margin-bottom:-.15em;margin-top:-.35em;}#statement{width:85%;font-size:40pt;font-weight:500;margin:0 auto;line-height:40pt;margin-bottom:20px;letter-spacing:-.1vw;}#contact{margin:0 auto;height:4em;margin-top:1.5em;> div,svg{height:100%;}}@media (max-width:1000px){#hello{font-size:200pt;font-weight:500;margin-bottom:-.1em;margin-top:-.4em;letter-spacing:-15pt;}#statement{font-size:30pt;line-height:30pt;}#contact{margin-top:1em;}}@media (max-width:600px){#hello{font-size:40vw;margin-bottom:-50px;margin-top:-.5em;letter-spacing:-3vw;}#statement{font-size:24pt;line-height:24pt;margin-top:50px;}#contact{font-size:12pt;line-height:18pt;letter-spacing:0vw;margin-top:2em;}}@media (min-width:1400px){#hello{font-size:360pt;margin-bottom:-50px;margin-top:-.3em;letter-spacing:-30pt;}#statement{font-size:50pt;line-height:50pt;width:80%;}#contact{height:3em;}}'], function (p) {
   return p.bgColor;
 }, function (p) {
   return p.textColor;
@@ -11345,7 +11345,7 @@ window.addEventListener('message', (0, _adminPageBridge.onMessage)(function (mes
   renderPage();
 }));
 
-// window.onload = renderPage;
+window.onload = renderPage;
 
 /***/ }),
 /* 203 */
@@ -11514,7 +11514,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 10vh;\n  .tilt-element {\n    transform-style: preserve-3d;\n    height: 100%;\n    width: 100%;\n  }\n'], ['\n  height: 100vh;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 10vh;\n  .tilt-element {\n    transform-style: preserve-3d;\n    height: 100%;\n    width: 100%;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  height: 100vmin;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 10vmin;\n  .tilt-element {\n    transform-style: preserve-3d;\n    height: 100%;\n    width: 100%;\n  }\n'], ['\n  height: 100vmin;\n  width: 100vw;\n  background: ', ';\n  display: block;\n  margin-bottom: 10vmin;\n  .tilt-element {\n    transform-style: preserve-3d;\n    height: 100%;\n    width: 100%;\n  }\n']);
 
 var _react = __webpack_require__(0);
 
@@ -11669,7 +11669,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var arctan = function arctan(x, scale) {
-  if (!x) {
+  if (typeof x !== 'number') {
     return 0;
   }
   return Math.atan(2 * x / scale - 1) * 4 / Math.PI;
@@ -11677,12 +11677,12 @@ var arctan = function arctan(x, scale) {
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{transition:filter 1s;filter:blur(0);}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{filter:blur(0);transform:scale(1.1)}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
   return p.transformX * -10;
 }, function (p) {
   return p.transformX * 10;
 }, function (p) {
-  return p.isLoading && '\n    cursor: grab;\n    #panels {\n      img {\n        height: 0;\n        width: 0;\n      }\n    }\n    #background {\n      filter: blur(20px);\n    }\n  ';
+  return p.isLoading && '\n    cursor: grab;\n    #panels {\n      img {\n        height: 0;\n        width: 0;\n        opacity: 0;\n      }\n    }\n    #background {\n      filter: blur(20px);\n    }\n  ';
 });
 
 var Panels = function (_React$Component) {
@@ -11712,7 +11712,7 @@ var Panels = function (_React$Component) {
     };
 
     _this.state = {
-      projectId: '',
+      projectId: 'rad',
       scrollTop: null,
       transformX: null,
       isLoading: true
@@ -11725,6 +11725,7 @@ var Panels = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.$panels = document.getElementById('panels');
+      this.startingScrollTop = document.getElementById('starting-' + this.state.projectId).offsetTop;
       this.setState({
         isLoading: false
       });
@@ -11786,7 +11787,7 @@ var Panels = function (_React$Component) {
       return _react2.default.createElement(
         Style,
         { transformX: this.state.transformX, isLoading: this.state.isLoading },
-        this.props.cursorX && _react2.default.createElement(
+        typeof this.props.cursorX === 'number' && _react2.default.createElement(
           'div',
           {
             className: 'cursor',

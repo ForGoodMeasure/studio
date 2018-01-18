@@ -11,11 +11,11 @@ const Tilt = styled.div`
   width: 100%;
 `;
 const Style = PxSection.extend`
-  height: 100vh;
+  height: 100vmin;
   width: 100vw;
   background: ${ p => p.color };
   display: block;
-  margin-bottom: 10vh;
+  margin-bottom: 10vmin;
   .tilt-element {
     transform-style: preserve-3d;
     height: 100%;

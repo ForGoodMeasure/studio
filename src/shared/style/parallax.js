@@ -10,7 +10,7 @@ const calculateScale = depth => (
 
 export const Px = styled.div`
   perspective: ${perspective}px;
-  height: 100vh;
+  height: 100vw;
 `;
 
 export const PxTitle = styled.div`
@@ -30,7 +30,7 @@ export const PxSection = styled.div`
 
 PxSection.defaultProps = {
   zIndex: 0,
-  height: '100vh'
+  height: '100vw'
 }
 
 export const PxLayer = styled.div`

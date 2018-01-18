@@ -16,7 +16,7 @@ const Style = styled.div`
   font-size: 1.6em;
   background: ${ p => p.bgColor };
   color: ${ p => p.textColor };
-  transition: 1s background, 1s color;
+  transition: background 1s, color 1s, filter 1s, transform 1s;
   .type {
     width: 100%;
     text-align: center;

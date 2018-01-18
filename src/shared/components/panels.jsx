@@ -11,7 +11,7 @@ import SVG from '../style/svg';
 import Hideable from '../style/hideable';
 
 const arctan = (x, scale) => {
-  if (!x) {
+  if (typeof x !== 'number') {
     return 0;
   }
   return Math.atan( (2 * x) / scale - 1 ) * 4 / Math.PI;
@@ -23,6 +23,10 @@ const Style = styled.div`
     height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
+    img {
+      transition: opacity 500ms;
+      opacity: 1;
+    }
     .tilt-element {
       transform:
         translateX(${ p => p.transformX * -10 }vw)
@@ -30,8 +34,8 @@ const Style = styled.div`
     }
   }
   #background {
-    transition: filter 1s;
     filter: blur(0);
+    transform: scale(1.1)
   }
   .cursor {
     height: 6em;
@@ -53,6 +57,7 @@ const Style = styled.div`
       img {
         height: 0;
         width: 0;
+        opacity: 0;
       }
     }
     #background {
@@ -66,7 +71,7 @@ class Panels extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectId: '',
+      projectId: 'rad',
       scrollTop: null,
       transformX: null,
       isLoading: true
@@ -76,6 +81,7 @@ class Panels extends React.Component {
 
   componentDidMount() {
     this.$panels = document.getElementById('panels');
+    this.startingScrollTop = document.getElementById(`starting-${ this.state.projectId }`).offsetTop;
     this.setState({
       isLoading: false
     });
@@ -148,7 +154,7 @@ class Panels extends React.Component {
   render() {
     return (
       <Style transformX={ this.state.transformX } isLoading={ this.state.isLoading }>
-         { this.props.cursorX &&
+         { typeof this.props.cursorX === 'number' &&
             <div
               className="cursor"
               style={{
