@@ -8,6 +8,7 @@ import Panels from './panels';
 import { localContextType } from '../util';
 import { Px } from '../style/parallax';
 import Background from './background';
+import LoadingScreen from './loading-screen';
 
 const Style = styled.div`
   .heading {
@@ -51,7 +52,7 @@ class App extends React.Component {
     );
   }
 
-  render() {
+  render() {    
     return (
       <Style
         onMouseMove={ this.onMouseMove }

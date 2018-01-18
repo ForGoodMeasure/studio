@@ -9,8 +9,14 @@ import Background from './background';
 import { Px } from '../style/parallax';
 import SVG from '../style/svg';
 import Hideable from '../style/hideable';
+import { loadImages, localContextType } from '../util';
 
-const arctan = (x, scale) => Math.atan( (2 * x) / scale - 1 ) * 4 / Math.PI;
+const arctan = (x, scale) => {
+  if (!x) {
+    return 0;
+  }
+  return Math.atan( (2 * x) / scale - 1 ) * 4 / Math.PI;
+}
 
 const Style = styled.div`
   #panels {
@@ -18,11 +24,19 @@ const Style = styled.div`
     height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
+    opacity: ${ p => p.isLoading ? 0 : 1 };
+    transition: opacity 4s ease-in-out 2s;
     .tilt-element {
       transform:
         translateX(${ p => p.transformX * -10 }vw)
         rotate3d(0, 1, 0, ${ p => p.transformX * 10 }deg);
     }
+  }
+  #background {
+    filter: ${ p => p.isLoading ? 'blur(20px)' : 'blur(0)' };
+  }
+  #loading {
+
   }
   .cursor {
     height: 6em;
@@ -47,7 +61,9 @@ class Panels extends React.Component {
     this.state = {
       projectId: '',
       scrollTop: null,
-      transformX: null
+      transformX: null,
+      isLoading: true,
+      percentDone: 0
     };
     this.childList = React.Children.toArray(props.children);
   }
@@ -55,15 +71,30 @@ class Panels extends React.Component {
   componentDidMount() {
     this.$panels = document.getElementById('panels');
 
-    // Select a random starting panel from the set of children with property
-    // 'isStartingPanel' set to true
-    const startingPanels = this.childList.filter( child => child.props.isStartingPanel );
-    const randomPanel = startingPanels[ Math.floor( Math.random() * startingPanels.length )];
-    const randomId = `starting-${ randomPanel.props.projectId }`;
-    this.startingScrollTop = document.getElementById(randomId).offsetTop;
+    // Select a random starting panel from the the middle of the set of children
+    const numProjects = 4;
+    const numChildren = this.childList.length;
+    const middleChildLow = numChildren / 2 - numProjects / 2;
+    const randomChildIndex = Math.floor(Math.random() * numProjects + middleChildLow);
+    const windowHeight = window.innerHeight;
+
+    console.log(randomChildIndex);
+
+    this.startingScrollTop = windowHeight * randomChildIndex;
+
+    // Preload images
+    const imageUrls = window.__locals__.imageUrls;
+    const wrappedImageUrls = imageUrls.map(this.context.localContext.assetUrl);
+    loadImages(wrappedImageUrls, {
+      onProgress: percentDone => this.setState({ percentDone }),
+      onComplete: () => this.setState({ isLoading: false})
+    });
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.state.isLoading) {
+      return;
+    }
     const scrollTop = this.getScrollTop();
     const transformX = this.getTransformX();
     const projectId = this.getProjectId();
@@ -76,6 +107,10 @@ class Panels extends React.Component {
   }
 
   componentDidUpdate() {
+    if (this.state.isLoading) {
+      return;
+    }
+    this.$panels = this.$panels || document.getElementById('panels');
     this.$panels.scrollTop = this.state.scrollTop;
   }
 
@@ -129,8 +164,7 @@ class Panels extends React.Component {
 
   render() {
     return (
-      <Style transformX={ this.state.transformX }>
-        <Hideable hideInitially visible>
+      <Style transformX={ this.state.transformX } isLoading={ this.state.isLoading }>
          { this.props.cursorX &&
             <div
               className="cursor"
@@ -146,18 +180,23 @@ class Panels extends React.Component {
             </div>
           }
           <Background
+            id="background"
             bgColor={ this.getBgColor() }
             textColor={ this.getTextColor() }
           />
+          {
+            !this.state.isLoading &&
             <Px id="panels">
               {
                 this.childList
               }
             </Px>
-        </Hideable>
+          }
       </Style>
     );
   }
 };
+
+Panels.contextTypes = localContextType;
 
 export default Panels;

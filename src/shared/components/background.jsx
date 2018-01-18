@@ -16,7 +16,7 @@ const Style = styled.div`
   font-size: 1.6em;
   background: ${ p => p.bgColor };
   color: ${ p => p.textColor };
-  transition: 1s background, 1s color;
+  transition: background 1.5s, color 1.5s, filter 1.5s;
   .type {
     width: 100%;
     text-align: center;
@@ -104,6 +104,7 @@ class Background extends React.Component {
   render() {
     return (
       <Style
+        id={ this.props.id }
         cursorUrl={ this.props.cursorUrl }
         onMouseMove={ this.onMouseMove }
         textColor={ this.props.textColor }
