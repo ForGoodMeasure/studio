@@ -6539,6 +6539,7 @@ var Background = function (_React$Component) {
       return _react2.default.createElement(
         Style,
         {
+          id: this.props.id,
           cursorUrl: this.props.cursorUrl,
           onMouseMove: this.onMouseMove,
           textColor: this.props.textColor,
@@ -10885,8 +10886,6 @@ function browserRenderer(genStore, mountPoint) {
     content: window.__locals__.content
   });
 
-  (0, _imagePreloader.preload)({ localContext: localContext, imageUrls: window.__locals__.imageUrls });
-
   var store = genStore(new _farce.BrowserProtocol(), deserialize(window.__locals__.storeState));
   var matchContext = { store: store };
 
@@ -11346,7 +11345,7 @@ window.addEventListener('message', (0, _adminPageBridge.onMessage)(function (mes
   renderPage();
 }));
 
-renderPage();
+// window.onload = renderPage;
 
 /***/ }),
 /* 203 */
@@ -11670,15 +11669,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var arctan = function arctan(x, scale) {
+  if (!x) {
+    return 0;
+  }
   return Math.atan(2 * x / scale - 1) * 4 / Math.PI;
 };
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}'], function (p) {
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{transition:filter 1s;filter:blur(0);}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
   return p.transformX * -10;
 }, function (p) {
   return p.transformX * 10;
+}, function (p) {
+  return p.isLoading && '\n    cursor: grab;\n    #panels {\n      img {\n        height: 0;\n        width: 0;\n      }\n    }\n    #background {\n      filter: blur(20px);\n    }\n  ';
 });
 
 var Panels = function (_React$Component) {
@@ -11710,7 +11714,8 @@ var Panels = function (_React$Component) {
     _this.state = {
       projectId: '',
       scrollTop: null,
-      transformX: null
+      transformX: null,
+      isLoading: true
     };
     _this.childList = _react2.default.Children.toArray(props.children);
     return _this;
@@ -11720,15 +11725,9 @@ var Panels = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.$panels = document.getElementById('panels');
-
-      // Select a random starting panel from the set of children with property
-      // 'isStartingPanel' set to true
-      var startingPanels = this.childList.filter(function (child) {
-        return child.props.isStartingPanel;
+      this.setState({
+        isLoading: false
       });
-      var randomPanel = startingPanels[Math.floor(Math.random() * startingPanels.length)];
-      var randomId = 'starting-' + randomPanel.props.projectId;
-      this.startingScrollTop = document.getElementById(randomId).offsetTop;
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -11786,33 +11785,30 @@ var Panels = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         Style,
-        { transformX: this.state.transformX },
+        { transformX: this.state.transformX, isLoading: this.state.isLoading },
+        this.props.cursorX && _react2.default.createElement(
+          'div',
+          {
+            className: 'cursor',
+            style: {
+              top: this.props.cursorY,
+              left: this.props.cursorX,
+              transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
+              width: '5em',
+              height: '5em'
+            }
+          },
+          _react2.default.createElement(_svg2.default, { path: 'back-forward-cursor.svg' })
+        ),
+        _react2.default.createElement(_background2.default, {
+          id: 'background',
+          bgColor: this.getBgColor(),
+          textColor: this.getTextColor()
+        }),
         _react2.default.createElement(
-          _hideable2.default,
-          { hideInitially: true, visible: true },
-          this.props.cursorX && _react2.default.createElement(
-            'div',
-            {
-              className: 'cursor',
-              style: {
-                top: this.props.cursorY,
-                left: this.props.cursorX,
-                transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
-                width: '5em',
-                height: '5em'
-              }
-            },
-            _react2.default.createElement(_svg2.default, { path: 'back-forward-cursor.svg' })
-          ),
-          _react2.default.createElement(_background2.default, {
-            bgColor: this.getBgColor(),
-            textColor: this.getTextColor()
-          }),
-          _react2.default.createElement(
-            _parallax.Px,
-            { id: 'panels' },
-            this.childList
-          )
+          _parallax.Px,
+          { id: 'panels' },
+          this.childList
         )
       );
     }

@@ -104,6 +104,7 @@ class Background extends React.Component {
   render() {
     return (
       <Style
+        id={ this.props.id }
         cursorUrl={ this.props.cursorUrl }
         onMouseMove={ this.onMouseMove }
         textColor={ this.props.textColor }

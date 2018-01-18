@@ -10,7 +10,12 @@ import { Px } from '../style/parallax';
 import SVG from '../style/svg';
 import Hideable from '../style/hideable';
 
-const arctan = (x, scale) => Math.atan( (2 * x) / scale - 1 ) * 4 / Math.PI;
+const arctan = (x, scale) => {
+  if (!x) {
+    return 0;
+  }
+  return Math.atan( (2 * x) / scale - 1 ) * 4 / Math.PI;
+}
 
 const Style = styled.div`
   #panels {
@@ -23,6 +28,10 @@ const Style = styled.div`
         translateX(${ p => p.transformX * -10 }vw)
         rotate3d(0, 1, 0, ${ p => p.transformX * 10 }deg);
     }
+  }
+  #background {
+    transition: filter 1s;
+    filter: blur(0);
   }
   .cursor {
     height: 6em;
@@ -38,6 +47,18 @@ const Style = styled.div`
     width: 100%;
     text-align: center;
   }
+  ${ p => p.isLoading && `
+    cursor: grab;
+    #panels {
+      img {
+        height: 0;
+        width: 0;
+      }
+    }
+    #background {
+      filter: blur(20px);
+    }
+  `}
 `;
 
 class Panels extends React.Component {
@@ -47,20 +68,17 @@ class Panels extends React.Component {
     this.state = {
       projectId: '',
       scrollTop: null,
-      transformX: null
+      transformX: null,
+      isLoading: true
     };
     this.childList = React.Children.toArray(props.children);
   }
 
   componentDidMount() {
     this.$panels = document.getElementById('panels');
-
-    // Select a random starting panel from the set of children with property
-    // 'isStartingPanel' set to true
-    const startingPanels = this.childList.filter( child => child.props.isStartingPanel );
-    const randomPanel = startingPanels[ Math.floor( Math.random() * startingPanels.length )];
-    const randomId = `starting-${ randomPanel.props.projectId }`;
-    this.startingScrollTop = document.getElementById(randomId).offsetTop;
+    this.setState({
+      isLoading: false
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -129,8 +147,7 @@ class Panels extends React.Component {
 
   render() {
     return (
-      <Style transformX={ this.state.transformX }>
-        <Hideable hideInitially visible>
+      <Style transformX={ this.state.transformX } isLoading={ this.state.isLoading }>
          { this.props.cursorX &&
             <div
               className="cursor"
@@ -146,15 +163,15 @@ class Panels extends React.Component {
             </div>
           }
           <Background
+            id="background"
             bgColor={ this.getBgColor() }
             textColor={ this.getTextColor() }
           />
-            <Px id="panels">
-              {
-                this.childList
-              }
-            </Px>
-        </Hideable>
+          <Px id="panels">
+            {
+              this.childList
+            }
+          </Px>
       </Style>
     );
   }
