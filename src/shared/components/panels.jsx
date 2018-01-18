@@ -43,6 +43,7 @@ const Style = styled.div`
     position: fixed;
     z-index: 10;
     pointer-events:none;
+    transition: transform 400ms;
   }
   .nav {
     position: fixed;
@@ -70,8 +71,9 @@ class Panels extends React.Component {
 
   constructor(props) {
     super(props);
+    const randomProject = (['rad', 'sex', 'hab', 'sherpa'])[ Math.floor(Math.random() * 4)];
     this.state = {
-      projectId: 'rad',
+      projectId: randomProject,
       scrollTop: null,
       transformX: null,
       isLoading: true
@@ -160,12 +162,12 @@ class Panels extends React.Component {
               style={{
                 top: this.props.cursorY,
                 left: this.props.cursorX,
-                transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
+                transform: (this.props.cursorY > window.innerHeight / 2) ? 'rotate(540deg)' : '',
                 width: '5em',
                 height: '5em'
               }}
             >
-              <SVG path="back-forward-cursor.svg" />
+              <SVG path="cursor-01-1.svg" />
             </div>
           }
           <Background

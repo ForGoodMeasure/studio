@@ -11677,7 +11677,7 @@ var arctan = function arctan(x, scale) {
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{filter:blur(0);transform:scale(1.1)}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{filter:blur(0);transform:scale(1.1)}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;transition:transform 400ms;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
   return p.transformX * -10;
 }, function (p) {
   return p.transformX * 10;
@@ -11711,8 +11711,9 @@ var Panels = function (_React$Component) {
       }[_this.state.projectId] || '#000000';
     };
 
+    var randomProject = ['rad', 'sex', 'hab', 'sherpa'][Math.floor(Math.random() * 4)];
     _this.state = {
-      projectId: 'rad',
+      projectId: randomProject,
       scrollTop: null,
       transformX: null,
       isLoading: true
@@ -11794,12 +11795,12 @@ var Panels = function (_React$Component) {
             style: {
               top: this.props.cursorY,
               left: this.props.cursorX,
-              transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
+              transform: this.props.cursorY > window.innerHeight / 2 ? 'rotate(540deg)' : '',
               width: '5em',
               height: '5em'
             }
           },
-          _react2.default.createElement(_svg2.default, { path: 'back-forward-cursor.svg' })
+          _react2.default.createElement(_svg2.default, { path: 'cursor-01-1.svg' })
         ),
         _react2.default.createElement(_background2.default, {
           id: 'background',
@@ -45302,6 +45303,7 @@ function symbolObservablePonyfill(root) {
 var map = {
 	"./back-cursor.svg": 190,
 	"./back-forward-cursor.svg": 191,
+	"./cursor-01-1.svg": 409,
 	"./hab-cursor.svg": 192,
 	"./hi-cursor.svg": 193,
 	"./maxcont.svg": 194,
@@ -45328,6 +45330,15 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = 408;
+
+/***/ }),
+/* 409 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 148 148\"><defs><style>.cls-1{fill:#dedede;}</style></defs><title>cursor</title><circle class=\"cls-1\" cx=\"74\" cy=\"74\" r=\"74\"></circle><rect x=\"67.41\" y=\"50.34\" width=\"13.19\" height=\"66.06\"></rect><polygon points=\"99.74 57.91 74 31.01 48.26 57.91 99.74 57.91\"></polygon></svg>";
 
 /***/ })
 /******/ ]);
