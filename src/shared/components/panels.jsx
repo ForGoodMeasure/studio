@@ -46,8 +46,8 @@ class Panels extends React.Component {
     super(props);
     this.state = {
       projectId: '',
-      scrollTop: 0,
-      transformX: 0
+      scrollTop: null,
+      transformX: null
     };
     this.childList = React.Children.toArray(props.children);
   }
@@ -55,6 +55,8 @@ class Panels extends React.Component {
   componentDidMount() {
     this.$panels = document.getElementById('panels');
 
+    // Select a random starting panel from the set of children with property
+    // 'isStartingPanel' set to true
     const startingPanels = this.childList.filter( child => child.props.isStartingPanel );
     const randomPanel = startingPanels[ Math.floor( Math.random() * startingPanels.length )];
     const randomId = `starting-${ randomPanel.props.projectId }`;
@@ -78,11 +80,20 @@ class Panels extends React.Component {
   }
 
   getScrollTop() {
+    const docHeight = this.$panels.scrollHeight;
     const windowHeight = window.innerHeight;
     const baseRate = arctan(this.props.cursorY, windowHeight);
     const scrollRate =  35 * baseRate;
-    const scrollTop = this.state.scrollTop ? this.state.scrollTop + scrollRate : this.startingScrollTop;
-    return scrollTop;
+
+    // Edge cases for top, bottom, and starting position
+    if (this.state.scrollTop > docHeight - windowHeight ) {
+      return docHeight - windowHeight;
+    } else if ( this.state.scrollTop < 0 ) {
+      return 1;
+    } else if ( !this.state.scrollTop ) {
+      return this.startingScrollTop;
+    }
+    return this.state.scrollTop + scrollRate;
   }
 
   getTransformX() {
@@ -120,18 +131,20 @@ class Panels extends React.Component {
     return (
       <Style transformX={ this.state.transformX }>
         <Hideable hideInitially visible>
-          <div
-            className="cursor"
-            style={{
-              top: this.props.cursorY,
-              left: this.props.cursorX,
-              transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
-              width: '5em',
-              height: '5em'
-            }}
-          >
-            <SVG path="back-forward-cursor.svg" />
-          </div>
+         { this.props.cursorX &&
+            <div
+              className="cursor"
+              style={{
+                top: this.props.cursorY,
+                left: this.props.cursorX,
+                transform: this.state.scrollRate > 0 ? 'rotate(180deg)' : '',
+                width: '5em',
+                height: '5em'
+              }}
+            >
+              <SVG path="back-forward-cursor.svg" />
+            </div>
+          }
           <Background
             bgColor={ this.getBgColor() }
             textColor={ this.getTextColor() }

@@ -11709,8 +11709,8 @@ var Panels = function (_React$Component) {
 
     _this.state = {
       projectId: '',
-      scrollTop: 0,
-      transformX: 0
+      scrollTop: null,
+      transformX: null
     };
     _this.childList = _react2.default.Children.toArray(props.children);
     return _this;
@@ -11721,6 +11721,8 @@ var Panels = function (_React$Component) {
     value: function componentDidMount() {
       this.$panels = document.getElementById('panels');
 
+      // Select a random starting panel from the set of children with property
+      // 'isStartingPanel' set to true
       var startingPanels = this.childList.filter(function (child) {
         return child.props.isStartingPanel;
       });
@@ -11749,11 +11751,20 @@ var Panels = function (_React$Component) {
   }, {
     key: 'getScrollTop',
     value: function getScrollTop() {
+      var docHeight = this.$panels.scrollHeight;
       var windowHeight = window.innerHeight;
       var baseRate = arctan(this.props.cursorY, windowHeight);
       var scrollRate = 35 * baseRate;
-      var scrollTop = this.state.scrollTop ? this.state.scrollTop + scrollRate : this.startingScrollTop;
-      return scrollTop;
+
+      // Edge cases for top, bottom, and starting position
+      if (this.state.scrollTop > docHeight - windowHeight) {
+        return docHeight - windowHeight;
+      } else if (this.state.scrollTop < 0) {
+        return 1;
+      } else if (!this.state.scrollTop) {
+        return this.startingScrollTop;
+      }
+      return this.state.scrollTop + scrollRate;
     }
   }, {
     key: 'getTransformX',
@@ -11779,7 +11790,7 @@ var Panels = function (_React$Component) {
         _react2.default.createElement(
           _hideable2.default,
           { hideInitially: true, visible: true },
-          _react2.default.createElement(
+          this.props.cursorX && _react2.default.createElement(
             'div',
             {
               className: 'cursor',
