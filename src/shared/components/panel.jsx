@@ -59,6 +59,12 @@ const Panel = (props, { localContext }) => {
     <Style { ...props } className="panel" id={ props.isStartingPanel ? `starting-${ props.projectId }` : '' }>
       <Tilt
         className="tilt-element"
+        style={{
+          transform: `
+            translateX(${ props.transformX * -10 }vw)
+            rotate3d(0, 1, 0, ${ props.transformX * 10 }deg)
+          `
+        }}
       >
         {
           images.map( (img, i) => (

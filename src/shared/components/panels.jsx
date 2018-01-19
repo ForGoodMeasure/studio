@@ -6,6 +6,7 @@ import scroll from 'scroll';
 import dotty from 'dotty';
 
 import Background from './background';
+import Panel from './panel';
 import { Px } from '../style/parallax';
 import SVG from '../style/svg';
 import Hideable from '../style/hideable';
@@ -88,7 +89,7 @@ class Panels extends React.Component {
       transformX: null,
       isLoading: true
     };
-    this.childList = React.Children.toArray(props.children);
+    this.childList = this.props.data;
   }
 
   componentDidMount() {
@@ -190,7 +191,13 @@ class Panels extends React.Component {
           </div>
           <Px id="panels">
             {
-              this.childList
+              this.childList.map( (item, i) => (
+                <Panel
+                  {...item }
+                  key={ i }
+                  transformX={ this.state.transformX }
+                />
+              ))
             }
           </Px>
       </Style>

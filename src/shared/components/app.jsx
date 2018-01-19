@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Panel from './panel';
 import Panels from './panels';
 import { localContextType } from '../util';
 import { Px } from '../style/parallax';
@@ -22,6 +21,7 @@ class App extends React.Component {
     super(props);
     this.cursorX = null;
     this.cursorY = null;
+    this.showCursor = true;
     this.state = {
       cursorX: this.cursorX,
       cursorY: this.cursorY
@@ -34,6 +34,9 @@ class App extends React.Component {
   }
 
   handleOrientation({ beta, gamma }) {
+    if (!beta && !gamma) {
+      return;
+    }
     const pageWidth = window.innerWidth;
     const pageHeight = window.innerHeight;
     let x = gamma;   // [-180, 180]
@@ -50,13 +53,15 @@ class App extends React.Component {
 
     this.cursorX = pageWidth * x;
     this.cursorY = pageHeight * ( 1 - y );
+    this.showCursor = false;
+
   }
 
   loop() {
     this.setState({
       cursorX: this.cursorX,
       cursorY: this.cursorY,
-      showCursor: false
+      showCursor: this.showCursor
     })
     window.requestAnimationFrame(this.loop.bind(this));
   }
@@ -82,38 +87,39 @@ class App extends React.Component {
           cursorY={ this.state.cursorY }
           startingProjectId={ this.props.data.projectId }
           showCursor={ this.state.showCursor }
-        >
-          <Panel empty />
-          <Panel projectId="rad" />
-          <Panel projectId="hab" />
-          <Panel projectId="sherpa" />
-          <Panel projectId="sex" />
-          <Panel projectId="rad" />
-          <Panel projectId="hab" />
-          <Panel projectId="sherpa" />
-          <Panel projectId="sex" />
-          <Panel projectId="rad" />
-          <Panel projectId="hab" />
-          <Panel projectId="sherpa" />
-          <Panel projectId="sex" />
-          <Panel isStartingPanel projectId="rad" />
-          <Panel isStartingPanel projectId="hab" />
-          <Panel isStartingPanel projectId="sherpa" />
-          <Panel isStartingPanel projectId="sex" />
-          <Panel projectId="rad" />
-          <Panel projectId="hab" />
-          <Panel projectId="sherpa" />
-          <Panel projectId="sex" />
-          <Panel projectId="rad" />
-          <Panel projectId="hab" />
-          <Panel projectId="sherpa" />
-          <Panel projectId="sex" />
-          <Panel projectId="rad" />
-          <Panel projectId="hab" />
-          <Panel projectId="sherpa" />
-          <Panel projectId="sex" />
-          <Panel empty {...this.state} />
-        </Panels>
+          data={[
+            { empty: true },
+            { projectId: 'rad' },
+            { projectId: 'hab' },
+            { projectId: 'sherpa' },
+            { projectId: 'sex' },
+            { projectId: 'rad' },
+            { projectId: 'hab' },
+            { projectId: 'sherpa' },
+            { projectId: 'sex' },
+            { projectId: 'rad' },
+            { projectId: 'hab' },
+            { projectId: 'sherpa' },
+            { projectId: 'sex' },
+            { projectId: 'rad', isStartingPanel: true },
+            { projectId: 'hab', isStartingPanel: true },
+            { projectId: 'sherpa', isStartingPanel: true },
+            { projectId: 'sex', isStartingPanel: true },
+            { projectId: 'rad' },
+            { projectId: 'hab' },
+            { projectId: 'sherpa' },
+            { projectId: 'sex' },
+            { projectId: 'rad' },
+            { projectId: 'hab' },
+            { projectId: 'sherpa' },
+            { projectId: 'sex' },
+            { projectId: 'rad' },
+            { projectId: 'hab' },
+            { projectId: 'sherpa' },
+            { projectId: 'sex' },
+            { empty: true }
+          ]}
+        />
       </Style>
     );
   }
