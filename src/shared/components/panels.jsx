@@ -35,8 +35,9 @@ const Style = styled.div`
     }
   }
   #background {
-    filter: blur(0);
-    transform: scale(1.1)
+    .type {
+      filter: blur(0);
+    }
   }
   #progress {
     height: 100vh;
@@ -73,7 +74,7 @@ const Style = styled.div`
         opacity: 0;
       }
     }
-    #background {
+    #background .type {
       filter: blur(20px);
     }
   `}
@@ -143,7 +144,7 @@ class Panels extends React.Component {
     const scrollTop = this.$panels.scrollTop;
     const docHeight = this.$panels.scrollHeight;
     const currentIndex = Math.floor(scrollTop / docHeight * (this.childList.length) + 0.5);
-    return dotty.get(this.childList, `${ currentIndex }.props.projectId`);
+    return dotty.get(this.childList, `${ currentIndex }.projectId`);
   }
 
   getBgColor = () => {

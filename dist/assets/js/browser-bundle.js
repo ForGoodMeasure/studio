@@ -11711,14 +11711,14 @@ var arctan = function arctan(x, scale) {
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{filter:blur(0);transform:scale(1.1)}#progress{height:100vh;display:flex;text-align:center;width:100%;justify-content:center;flex-direction:column;color:white;font-size:2em;display:', ';}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;transition:transform 400ms;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{.type{filter:blur(0);}}#progress{height:100vh;display:flex;text-align:center;width:100%;justify-content:center;flex-direction:column;color:white;font-size:2em;display:', ';}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;transition:transform 400ms;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
   return p.transformX * -10;
 }, function (p) {
   return p.transformX * 10;
 }, function (p) {
   return p.isLoading ? 'flex' : 'none';
 }, function (p) {
-  return p.isLoading && '\n    cursor: grab;\n    #panels {\n      img {\n        height: 0;\n        width: 0;\n        opacity: 0;\n      }\n    }\n    #background {\n      filter: blur(20px);\n    }\n  ';
+  return p.isLoading && '\n    cursor: grab;\n    #panels {\n      img {\n        height: 0;\n        width: 0;\n        opacity: 0;\n      }\n    }\n    #background .type {\n      filter: blur(20px);\n    }\n  ';
 });
 
 var Panels = function (_React$Component) {
@@ -11815,7 +11815,7 @@ var Panels = function (_React$Component) {
       var scrollTop = this.$panels.scrollTop;
       var docHeight = this.$panels.scrollHeight;
       var currentIndex = Math.floor(scrollTop / docHeight * this.childList.length + 0.5);
-      return _dotty2.default.get(this.childList, currentIndex + '.props.projectId');
+      return _dotty2.default.get(this.childList, currentIndex + '.projectId');
     }
   }, {
     key: 'render',
