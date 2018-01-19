@@ -71,9 +71,8 @@ class Panels extends React.Component {
 
   constructor(props) {
     super(props);
-    const randomProject = (['rad', 'sex', 'hab', 'sherpa'])[ Math.floor(Math.random() * 4)];
     this.state = {
-      projectId: randomProject,
+      projectId: props.startingProjectId,
       scrollTop: null,
       transformX: null,
       isLoading: true

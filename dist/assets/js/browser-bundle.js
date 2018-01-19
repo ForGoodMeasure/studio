@@ -11457,7 +11457,8 @@ var App = function (_React$Component) {
           _panels2.default,
           {
             cursorX: this.state.cursorX,
-            cursorY: this.state.cursorY
+            cursorY: this.state.cursorY,
+            startingProjectId: this.props.data.projectId
           },
           _react2.default.createElement(_panel2.default, { empty: true }),
           _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
@@ -11711,9 +11712,8 @@ var Panels = function (_React$Component) {
       }[_this.state.projectId] || '#000000';
     };
 
-    var randomProject = ['rad', 'sex', 'hab', 'sherpa'][Math.floor(Math.random() * 4)];
     _this.state = {
-      projectId: randomProject,
+      projectId: props.startingProjectId,
       scrollTop: null,
       transformX: null,
       isLoading: true
@@ -11853,7 +11853,13 @@ var _dotty2 = _interopRequireDefault(_dotty);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var initialState = {};
+var randomProjectId = function randomProjectId() {
+  return ['rad', 'sex', 'hab', 'sherpa'][Math.floor(Math.random() * 4)];
+};
+
+var initialState = {
+  startingProjectId: null
+};
 
 var clone = function clone(state, changes) {
   return Object.assign({}, state, changes);
@@ -11863,7 +11869,9 @@ var customReducer = exports.customReducer = function customReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
-  return state;
+  return {
+    startingProjectId: randomProjectId()
+  };
 };
 
 /***/ }),
@@ -11894,9 +11902,18 @@ var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var randomProjectId = function randomProjectId() {
+  return ['rad', 'sex', 'hab', 'sherpa'][Math.floor(Math.random() * 4)];
+};
+
 var routeConfig = exports.routeConfig = [{
   path: '/:string?',
-  Component: _app2.default
+  Component: _app2.default,
+  getData: function getData() {
+    return {
+      projectId: randomProjectId()
+    };
+  }
 }];
 
 /***/ }),

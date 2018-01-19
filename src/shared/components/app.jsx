@@ -59,6 +59,7 @@ class App extends React.Component {
         <Panels
           cursorX={ this.state.cursorX }
           cursorY={ this.state.cursorY }
+          startingProjectId={ this.props.data.projectId }
         >
           <Panel empty />
           <Panel projectId="rad" />
