@@ -37,6 +37,17 @@ const Style = styled.div`
     filter: blur(0);
     transform: scale(1.1)
   }
+  #progress {
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 2em;
+    display: ${ p => p.isLoading ? 'flex' : 'none' };
+  }
   .cursor {
     height: 6em;
     width: 6em;
@@ -155,7 +166,7 @@ class Panels extends React.Component {
   render() {
     return (
       <Style transformX={ this.state.transformX } isLoading={ this.state.isLoading }>
-         { typeof this.props.cursorX === 'number' &&
+         { typeof this.props.cursorX === 'number' && this.props.showCursor &&
             <div
               className="cursor"
               style={{
@@ -174,6 +185,9 @@ class Panels extends React.Component {
             bgColor={ this.getBgColor() }
             textColor={ this.getTextColor() }
           />
+          <div id="progress">
+            Loading...
+          </div>
           <Px id="panels">
             {
               this.childList

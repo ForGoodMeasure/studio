@@ -41,9 +41,6 @@ const Style = styled.div`
     margin: 0 auto;
     height: 4em;
     margin-top: 1.5em;
-    > div, svg {
-      height: 100%;
-    }
   }
   @media (max-width: 1000px) {
     #hello {
@@ -119,11 +116,9 @@ class Background extends React.Component {
             &amp; websites for clients and nice people.
           </div>
           <div id="contact">
-            <ul>
-              <li><u>New Business</u></li>
-              <li>hello@forgoodmeasure.us</li>
-              <li>917.882.0686</li>
-            </ul>
+            <div><u>New Business</u></div>
+            <div>hello@forgoodmeasure.us</div>
+            <div>917.882.0686</div>
           </div>
         </div>
       </Style>

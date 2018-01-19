@@ -6518,7 +6518,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'background__Style'
-})(['position:fixed;width:100vw;height:100vh;z-index:-10;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:1.6em;background:', ';color:', ';transition:background 1s,color 1s,filter 1s,transform 1s;.type{width:100%;text-align:center;}#hello{font-size:300pt;font-weight:500;letter-spacing:-20pt;margin-bottom:-.15em;margin-top:-.35em;}#statement{width:85%;font-size:40pt;font-weight:500;margin:0 auto;line-height:40pt;margin-bottom:20px;letter-spacing:-.1vw;}#contact{margin:0 auto;height:4em;margin-top:1.5em;> div,svg{height:100%;}}@media (max-width:1000px){#hello{font-size:200pt;font-weight:500;margin-bottom:-.1em;margin-top:-.4em;letter-spacing:-15pt;}#statement{font-size:30pt;line-height:30pt;}#contact{margin-top:1em;}}@media (max-width:600px){#hello{font-size:40vw;margin-bottom:-50px;margin-top:-.5em;letter-spacing:-3vw;}#statement{font-size:24pt;line-height:24pt;margin-top:50px;}#contact{font-size:12pt;line-height:18pt;letter-spacing:0vw;margin-top:2em;}}@media (min-width:1400px){#hello{font-size:360pt;margin-bottom:-50px;margin-top:-.3em;letter-spacing:-30pt;}#statement{font-size:50pt;line-height:50pt;width:80%;}#contact{height:3em;}}'], function (p) {
+})(['position:fixed;width:100vw;height:100vh;z-index:-10;text-align:center;display:flex;flex-direction:column;justify-content:center;font-size:1.6em;background:', ';color:', ';transition:background 1s,color 1s,filter 1s,transform 1s;.type{width:100%;text-align:center;}#hello{font-size:300pt;font-weight:500;letter-spacing:-20pt;margin-bottom:-.15em;margin-top:-.35em;}#statement{width:85%;font-size:40pt;font-weight:500;margin:0 auto;line-height:40pt;margin-bottom:20px;letter-spacing:-.1vw;}#contact{margin:0 auto;height:4em;margin-top:1.5em;}@media (max-width:1000px){#hello{font-size:200pt;font-weight:500;margin-bottom:-.1em;margin-top:-.4em;letter-spacing:-15pt;}#statement{font-size:30pt;line-height:30pt;}#contact{margin-top:1em;}}@media (max-width:600px){#hello{font-size:40vw;margin-bottom:-50px;margin-top:-.5em;letter-spacing:-3vw;}#statement{font-size:24pt;line-height:24pt;margin-top:50px;}#contact{font-size:12pt;line-height:18pt;letter-spacing:0vw;margin-top:2em;}}@media (min-width:1400px){#hello{font-size:360pt;margin-bottom:-50px;margin-top:-.3em;letter-spacing:-30pt;}#statement{font-size:50pt;line-height:50pt;width:80%;}#contact{height:3em;}}'], function (p) {
   return p.bgColor;
 }, function (p) {
   return p.textColor;
@@ -6562,27 +6562,23 @@ var Background = function (_React$Component) {
             'div',
             { id: 'contact' },
             _react2.default.createElement(
-              'ul',
+              'div',
               null,
               _react2.default.createElement(
-                'li',
+                'u',
                 null,
-                _react2.default.createElement(
-                  'u',
-                  null,
-                  'New Business'
-                )
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'hello@forgoodmeasure.us'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '917.882.0686'
+                'New Business'
               )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'hello@forgoodmeasure.us'
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              '917.882.0686'
             )
           )
         )
@@ -11452,13 +11448,42 @@ var App = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.loop();
+      window.addEventListener('deviceorientation', this.handleOrientation.bind(this));
+    }
+  }, {
+    key: 'handleOrientation',
+    value: function handleOrientation(_ref) {
+      var beta = _ref.beta,
+          gamma = _ref.gamma;
+
+      var pageWidth = window.innerWidth;
+      var pageHeight = window.innerHeight;
+      var x = gamma; // [-180, 180]
+      var y = beta; // [-90, 90]
+
+      // Because we don't want to have the device upside down
+      // We constrain the x value to the range [-90,90]
+      if (x > 90) {
+        x = 90;
+      };
+      if (x < -90) {
+        x = -90;
+      };
+
+      // Shift the range to [0,1]
+      x = (x + 90) / 180;
+      y = (y + 90) / 180;
+
+      this.cursorX = pageWidth * x;
+      this.cursorY = pageHeight * (1 - y);
     }
   }, {
     key: 'loop',
     value: function loop() {
       this.setState({
         cursorX: this.cursorX,
-        cursorY: this.cursorY
+        cursorY: this.cursorY,
+        showCursor: false
       });
       window.requestAnimationFrame(this.loop.bind(this));
     }
@@ -11480,7 +11505,8 @@ var App = function (_React$Component) {
           {
             cursorX: this.state.cursorX,
             cursorY: this.state.cursorY,
-            startingProjectId: this.props.data.projectId
+            startingProjectId: this.props.data.projectId,
+            showCursor: this.state.showCursor
           },
           _react2.default.createElement(_panel2.default, { empty: true }),
           _react2.default.createElement(_panel2.default, { projectId: 'rad' }),
@@ -11700,10 +11726,12 @@ var arctan = function arctan(x, scale) {
 
 var Style = _styledComponents2.default.div.withConfig({
   displayName: 'panels__Style'
-})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{filter:blur(0);transform:scale(1.1)}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;transition:transform 400ms;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
+})(['#panels{position:relative;height:100vh;overflow-x:hidden;overflow-y:hidden;img{transition:opacity 500ms;opacity:1;}.tilt-element{transform:translateX(', 'vw) rotate3d(0,1,0,', 'deg);}}#background{filter:blur(0);transform:scale(1.1)}#progress{height:100vh;display:flex;text-align:center;width:100%;justify-content:center;flex-direction:column;color:white;font-size:2em;display:', ';}.cursor{height:6em;width:6em;position:fixed;z-index:10;pointer-events:none;transition:transform 400ms;}.nav{position:fixed;top:0;left:0;width:100%;text-align:center;}', ''], function (p) {
   return p.transformX * -10;
 }, function (p) {
   return p.transformX * 10;
+}, function (p) {
+  return p.isLoading ? 'flex' : 'none';
 }, function (p) {
   return p.isLoading && '\n    cursor: grab;\n    #panels {\n      img {\n        height: 0;\n        width: 0;\n        opacity: 0;\n      }\n    }\n    #background {\n      filter: blur(20px);\n    }\n  ';
 });
@@ -11810,7 +11838,7 @@ var Panels = function (_React$Component) {
       return _react2.default.createElement(
         Style,
         { transformX: this.state.transformX, isLoading: this.state.isLoading },
-        typeof this.props.cursorX === 'number' && _react2.default.createElement(
+        typeof this.props.cursorX === 'number' && this.props.showCursor && _react2.default.createElement(
           'div',
           {
             className: 'cursor',
@@ -11829,6 +11857,11 @@ var Panels = function (_React$Component) {
           bgColor: this.getBgColor(),
           textColor: this.getTextColor()
         }),
+        _react2.default.createElement(
+          'div',
+          { id: 'progress' },
+          'Loading...'
+        ),
         _react2.default.createElement(
           _parallax.Px,
           { id: 'panels' },

@@ -30,12 +30,33 @@ class App extends React.Component {
 
   componentDidMount() {
     this.loop();
+    window.addEventListener('deviceorientation', this.handleOrientation.bind(this) );
+  }
+
+  handleOrientation({ beta, gamma }) {
+    const pageWidth = window.innerWidth;
+    const pageHeight = window.innerHeight;
+    let x = gamma;   // [-180, 180]
+    let y = beta;  // [-90, 90]
+
+    // Because we don't want to have the device upside down
+    // We constrain the x value to the range [-90,90]
+    if (x >  90) { x =  90 };
+    if (x < -90) { x = -90 };
+
+    // Shift the range to [0,1]
+    x = (x + 90) / 180;
+    y = (y + 90) / 180;
+
+    this.cursorX = pageWidth * x;
+    this.cursorY = pageHeight * ( 1 - y );
   }
 
   loop() {
     this.setState({
       cursorX: this.cursorX,
-      cursorY: this.cursorY
+      cursorY: this.cursorY,
+      showCursor: false
     })
     window.requestAnimationFrame(this.loop.bind(this));
   }
@@ -60,6 +81,7 @@ class App extends React.Component {
           cursorX={ this.state.cursorX }
           cursorY={ this.state.cursorY }
           startingProjectId={ this.props.data.projectId }
+          showCursor={ this.state.showCursor }
         >
           <Panel empty />
           <Panel projectId="rad" />
