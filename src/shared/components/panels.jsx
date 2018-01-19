@@ -120,7 +120,7 @@ class Panels extends React.Component {
     const docHeight = this.$panels.scrollHeight;
     const windowHeight = window.innerHeight;
     const baseRate = arctan(this.props.cursorY, windowHeight);
-    const scrollRate =  35 * baseRate;
+    const scrollRate =  25 * baseRate;
 
     // Edge cases for top, bottom, and starting position
     if (this.state.scrollTop > docHeight - windowHeight ) {

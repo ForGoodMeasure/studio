@@ -11790,7 +11790,7 @@ var Panels = function (_React$Component) {
       var docHeight = this.$panels.scrollHeight;
       var windowHeight = window.innerHeight;
       var baseRate = arctan(this.props.cursorY, windowHeight);
-      var scrollRate = 35 * baseRate;
+      var scrollRate = 25 * baseRate;
 
       // Edge cases for top, bottom, and starting position
       if (this.state.scrollTop > docHeight - windowHeight) {
