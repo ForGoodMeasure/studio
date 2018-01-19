@@ -6561,7 +6561,29 @@ var Background = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { id: 'contact' },
-            _react2.default.createElement(_svg2.default, { path: 'maxcont.svg', fill: this.props.textColor })
+            _react2.default.createElement(
+              'ul',
+              null,
+              _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                  'u',
+                  null,
+                  'New Business'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'hello@forgoodmeasure.us'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '917.882.0686'
+              )
+            )
           )
         )
       );

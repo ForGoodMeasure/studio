@@ -119,7 +119,11 @@ class Background extends React.Component {
             &amp; websites for clients and nice people.
           </div>
           <div id="contact">
-            <SVG path="maxcont.svg" fill={ this.props.textColor }/>
+            <ul>
+              <li><u>New Business</u></li>
+              <li>hello@forgoodmeasure.us</li>
+              <li>917.882.0686</li>
+            </ul>
           </div>
         </div>
       </Style>
