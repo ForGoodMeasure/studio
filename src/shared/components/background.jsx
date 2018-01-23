@@ -20,10 +20,10 @@ const Style = styled.div`
   .type {
     width: 100%;
     text-align: center;
+    font-weight: 500;
   }
   #hello {
     font-size: 300pt;
-    font-weight: 500;
     letter-spacing: -20pt;
     margin-bottom: -.15em;
     margin-top: -.35em;
@@ -31,7 +31,6 @@ const Style = styled.div`
   #statement {
     width: 85%;
     font-size: 40pt;
-    font-weight: 500;
     margin: 0 auto;
     line-height: 40pt;
     margin-bottom: 20px;
@@ -41,14 +40,12 @@ const Style = styled.div`
     margin: 0 auto;
     height: 4em;
     margin-top: 1.5em;
-    > div, svg {
-      height: 100%;
-    }
+    font-size: 24pt;
+    letter-spacing: 0vw;
   }
   @media (max-width: 1000px) {
     #hello {
       font-size: 200pt;
-      font-weight: 500;
       margin-bottom: -.1em;
       margin-top: -.4em;
       letter-spacing: -15pt;
@@ -59,6 +56,7 @@ const Style = styled.div`
     }
     #contact {
       margin-top: 1em;
+      font-size: 16pt;
     }
   }
   @media (max-width: 600px) {
@@ -76,7 +74,6 @@ const Style = styled.div`
 
     #contact {
       font-size: 12pt;
-      line-height: 18pt;
       letter-spacing: 0vw;
       margin-top: 2em;
     }
@@ -119,7 +116,11 @@ class Background extends React.Component {
             &amp; websites for clients and nice people.
           </div>
           <div id="contact">
-            <SVG path="maxcont.svg" fill={ this.props.textColor }/>
+            <ul>
+              <li><u>Contact</u></li>
+              <li>hello@forgoodmeasure.us</li>
+              <li>917.882.0686</li>
+            </ul>
           </div>
         </div>
       </Style>
