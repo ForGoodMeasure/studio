@@ -23,6 +23,7 @@
     "babel-types": "^6.26.0",
     "body-parser": "^1.16.1",
     "classnames": "^2.2.5",
+    "copy-webpack-plugin": "^4.5.0",
     "cors": "^2.8.1",
     "css-name": "^1.0.0",
     "dotenv": "^4.0.0",
@@ -56,11 +57,13 @@
     "styled-components": "^2.2.1",
     "styled-normalize": "^2.2.1",
     "svg-inline-loader": "^0.8.0",
-    "webpack": "^2.2.1"
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "webpack": "^2.2.1",
+    "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "build": "webpack",
-    "deploy": "./scripts clean && webpack && serverless deploy -f server && ./scripts makeStatic && ./scripts uploadAssets",
+    "dev": "webpack --config webpack.dev.js --watch",
+    "deploy": "./scripts clean && webpack --config webpack.prod.js && ./scripts makeStatic && ./scripts uploadAssets",
     "local": "nodemon -w ./dist"
   }
 }

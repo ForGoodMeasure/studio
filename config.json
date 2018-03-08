@@ -9,21 +9,25 @@
     "port": 3002
   },
   "stage": {
-    "prod": {
+    "ec2": {
       "resourceBase": "",
-      "assetBase": ""
+      "assetBase": "",
+      "bundleType": "prod"
     },
     "dev": {
       "resourceBase": "",
-      "assetBase": ""
+      "assetBase": "",
+      "bundleType": "dev"
     },
     "static": {
       "resourceBase": "",
-      "assetBase": ""
+      "assetBase": "",
+      "bundleType": "prod"
     },
     "lambda": {
       "resourceBase": "",
-      "assetBase": ""
+      "assetBase": "",
+      "bundleType": "prod"
     }
   },
   "staticRouteConfig": {
