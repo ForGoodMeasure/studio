@@ -42,6 +42,9 @@ const Style = styled.div`
     margin-top: 1.5em;
     font-size: 24pt;
     letter-spacing: 0vw;
+    ul {
+      list-style: none;
+    }
   }
   @media (max-width: 1000px) {
     #hello {

@@ -45,7 +45,8 @@
             "url": "/sex/ipad.png",
             "width": 45,
             "left": 10,
-            "top": 30
+            "top": 30,
+            "noShadow": true
         }, {
             "url": "/sex/typecrop.png",
             "width": 25,
@@ -81,7 +82,8 @@
             "url": "/hab/phones.png",
             "width": 40,
             "left": 10,
-            "top": 37
+            "top": 37,
+            "noShadow": true
         }],
         "sherpa": [{
             "url": "/sherpa/sherpa-07.jpg",
@@ -97,7 +99,8 @@
             "url": "/sherpa/sherpa-11.png",
             "width": 26,
             "left": 10,
-            "top": 40
+            "top": 40,
+            "noShadow": true
         }, {
             "url": "/sherpa/sherpa-04.jpg",
             "width": 30,

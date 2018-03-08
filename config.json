@@ -2,11 +2,11 @@
   "global": {
     "app_id": "fgm-site",
     "aws_profile": "fgm-dev",
-    "aws_s3_bucket": "forgoodmeasure.us",
+    "aws_s3_bucket": "www.forgoodmeasure.us",
     "aws_region": "us-east-1",
     "favicon_url": "",
-    "ga_id": "",
-    "port": 3000
+    "ga_id": "UA-79416302-1",
+    "port": 3002
   },
   "stage": {
     "prod": {

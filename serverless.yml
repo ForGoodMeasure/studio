@@ -5,9 +5,11 @@ provider:
   runtime: nodejs6.10
   region: us-east-1
   profile: fgm-dev
+  deploymentBucket:
+    name: fgm-serverless-deployments
 
 custom:
-  s3BucketName: forgoodmeasure.us
+  s3BucketName: www.forgoodmeasure.us
 
 package:
   include:
@@ -33,6 +35,8 @@ resources:
         BucketName: ${self:custom.s3BucketName}
         WebsiteConfiguration:
           IndexDocument: index.html
+        VersioningConfiguration:
+          Status: Enabled
     CloudfrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:

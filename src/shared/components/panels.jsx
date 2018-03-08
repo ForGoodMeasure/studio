@@ -33,9 +33,8 @@ const Style = styled.div`
         rotate3d(0, 1, 0, ${ p => p.transformX * 10 }deg);
     }
   }
-  #background {
+  #background .type {
     filter: blur(0);
-    transform: scale(1.1)
   }
   .cursor {
     height: 6em;
