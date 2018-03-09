@@ -42,6 +42,10 @@ function cloneContent() {
   run(`aws s3 cp s3://${ S3_BUCKET }/content/content.json ./src/content/content.json`);
 }
 
+function uploadIndex() {
+  run(`aws s3 cp --acl public-read dist/assets/index.html s3://${ S3_BUCKET }`)
+}
+
 function makeStatic() {
   staticPublisher.makeRoutes(config);
 }
